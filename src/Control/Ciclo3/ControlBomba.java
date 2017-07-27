@@ -29,8 +29,8 @@ public class ControlBomba {
         H4 = h_sistema.getHV();
         
         //[SL4, SV4] = S_sistema(T4, P4, Pref, Tref);
-        ControlS_Sistema s_sistema = new ControlS_Sistema(T4, P4, Pref, Tref);
-        S4 = s_sistema.getSv;
+        ControlS_Sistema s_sistema = new ControlS_Sistema(T4, P4, Pref, Tref,session);
+        S4 = s_sistema.getSV();
         
         double Test=T4; 
         double erro=1;
@@ -38,17 +38,17 @@ public class ControlBomba {
         double S,Burbuja;
         
         while(erro >= 0.0001){
-            s_sistema = new ControlS_Sistema(Test, P5, Pref, Tref);
-            S = s_sistema.getSv();
+            s_sistema = new ControlS_Sistema(Test, P5, Pref, Tref,session);
+            S = s_sistema.getSV();
             erro = Math.abs((S4-S)/S4);
             Burbuja = S4-S;
-            if(erro>0.0001 & Burbuja<0){
+            if(erro>0.0001 && Burbuja<0){
                 Test=Test-DT;
                 DT=DT/2;
                 if(DT<0.005){
                     DT=0.004987569731;
                 }
-            }else if(erro>0.0001 & Burbuja>0){
+            }else if(erro>0.0001 && Burbuja>0){
                 Test=Test+DT;
                 DT=DT/2;
                 if(DT<0.005){
@@ -73,13 +73,13 @@ public class ControlBomba {
             H = h_sistema.getHV();
             erro = Math.abs((H5-H)/H5);
             Burbuja=H5-H;
-            if(erro>0.0005 & Burbuja<0){
+            if(erro>0.0005 && Burbuja<0){
                 Test=Test-DT;
                 DT=DT/2;
                 if(DT<0.0005){
                     DT=0.0005456321;
                 }
-            }else if(erro>0.0005 & Burbuja>0){
+            }else if(erro>0.0005 && Burbuja>0){
                     Test=Test+DT;
                     DT=DT/2;
                     if(DT<0.0005){
@@ -89,7 +89,7 @@ public class ControlBomba {
         }
         
         T5=Test;
-        s_sistema = new ControlS_Sistema(T5, P5, Pref, Tref);
-        S5=s_sistema.getSv();
+        s_sistema = new ControlS_Sistema(T5, P5, Pref, Tref,session);
+        S5=s_sistema.getSV();
     }
 }

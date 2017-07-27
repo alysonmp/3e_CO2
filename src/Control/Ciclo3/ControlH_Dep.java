@@ -47,12 +47,12 @@ public class ControlH_Dep {
         
         if(Ps2 <=73.825){
             double dif = Math.abs((Ps2-P)/P);
-            if(dif >= 0.001 & Ps2 < P){
+            if(dif >= 0.001 && Ps2 < P){
                 //HDL=(R*T*(Zl-1)-((T*da_dT)-a)*((1/(2*N))*(log((Zl+M)/(Zl+Q)))))*100000;
                 HDL = (constantes.getR()*T*(zeta.getZl()-1)-((T*da_dT)-a)*((1/(2*N))*(Math.log((zeta.getZl()+M)/(zeta.getZl()+Q)))))*100000;
                 HDV = 0;
             }else{
-                if(dif >= 0.001 & Ps2 > P){
+                if(dif >= 0.001 && Ps2 > P){
                     HDL=0;
                     //HDV=(R*T*(Zv-1)-((T*da_dT)-a)*((1/(2*N))*(log((Zv+M)/(Zv+Q)))))*100000;
                     HDV=(constantes.getR()*T*(zeta.getZv()-1)-((T*da_dT)-a)*((1/(2*N))*(Math.log((zeta.getZv()+M)/(zeta.getZv()+Q)))))*100000;
