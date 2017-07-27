@@ -49,14 +49,12 @@ public class ViewPrincipal extends JFrame{
     //Labels
     //ENTRADA
     private JLabel lblP1 = new JLabel("P1: ");
-    private JLabel lblPP = new JLabel("PP: ");
-    private JLabel lblSUBT = new JLabel("SUBT: ");
+    private JLabel lblPconop = new JLabel("Pconop: ");
     private JLabel lblTf = new JLabel("Tf: ");
     private JLabel lblTres = new JLabel("Tres: ");
     private JLabel lblcompressor = new JLabel("Compressor: ");
-    private JLabel lbleffLT = new JLabel("effLt: ");
-    private JLabel lblzi = new JLabel("zi: ");
-    private JLabel lblVE = new JLabel("VE: ");
+    private JLabel lbleff = new JLabel("eff: ");
+    private JLabel lblG = new JLabel("G: ");
     private JLabel lblBeff = new JLabel("Beff: ");
     private JLabel lblPref = new JLabel("Pref: ");
     private JLabel lblTref = new JLabel("Tref: ");
@@ -76,17 +74,15 @@ public class ViewPrincipal extends JFrame{
     
     //TextFields
     //ENTRADA
-    private JTextField txtP1 = new JTextField("40",20);
-    private JTextField txtPP = new JTextField("3");
-    private JTextField txtSUBT = new JTextField("0");
+    private JTextField txtP1 = new JTextField("150",20);
+    private JTextField txtPconop = new JTextField("80");
     private JTextField txtTf = new JTextField("408.35");
     private JTextField txtTres = new JTextField("298.15");
-    private JTextField txteffLt = new JTextField("0.5");
-    private JTextField txtzi = new JTextField("0.8");
-    private JTextField txtVE = new JTextField("0.5");
+    private JTextField txteff = new JTextField("0.0");
+    private JTextField txtG = new JTextField("1");
     private JTextField txtBeff = new JTextField("0.8");
-    private JTextField txtPref = new JTextField("50");
-    private JTextField txtTref = new JTextField("273.15");
+    private JTextField txtPref = new JTextField("10");
+    private JTextField txtTref = new JTextField("217");
     private JTextField txtTeff = new JTextField("0.8");
     
     //SAIDA
@@ -141,142 +137,118 @@ public class ViewPrincipal extends JFrame{
         g.gridy = 1;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(lblPP,g);
+        painelEntrada.add(lblPconop,g);
         
         g.gridx = 1;
         g.gridy = 1;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(txtPP,g);
+        painelEntrada.add(txtPconop,g);
         
         g.gridx = 0;
         g.gridy = 2;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(lblSUBT,g);
-                
-        g.gridx = 1;
-        g.gridy = 2;
-        g.gridwidth = 2;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(txtSUBT,g);
-        
-        g.gridx = 0;
-        g.gridy = 3;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lblTf,g);
         
         g.gridx = 1;
-        g.gridy = 3;
+        g.gridy = 2;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtTf,g);
         
         g.gridx = 0;
-        g.gridy = 4;
+        g.gridy = 3;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lblTres,g);
         
         g.gridx = 1;
-        g.gridy = 4;
+        g.gridy = 3;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtTres,g);
         
         g.gridx = 0;
-        g.gridy = 5;
+        g.gridy = 4;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lblP1,g);
 
         g.gridx = 1;
-        g.gridy = 5;
+        g.gridy = 4;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtP1,g);
 
         g.gridx = 0;
+        g.gridy = 5;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(lbleff,g);
+        
+        g.gridx = 1;
+        g.gridy = 5;
+        g.gridwidth = 2;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(txteff,g);
+        
+        g.gridx = 0;
         g.gridy = 6;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(lbleffLT,g);
+        painelEntrada.add(lblG,g);
         
         g.gridx = 1;
         g.gridy = 6;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(txteffLt,g);
+        painelEntrada.add(txtG,g);
         
         g.gridx = 0;
         g.gridy = 7;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(lblzi,g);
-        
-        g.gridx = 1;
-        g.gridy = 7;
-        g.gridwidth = 2;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(txtzi,g);
-        
-        g.gridx = 0;
-        g.gridy = 8;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(lblVE,g);
-        
-        g.gridx = 1;
-        g.gridy = 8;
-        g.gridwidth = 2;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(txtVE,g);
-        
-        g.gridx = 0;
-        g.gridy = 9;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lblBeff,g);
         
         g.gridx = 1;
-        g.gridy = 9;
+        g.gridy = 7;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtBeff,g);
         
         g.gridx = 0;
-        g.gridy = 10;
+        g.gridy = 8;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lblPref,g);
         
         g.gridx = 1;
-        g.gridy = 10;
+        g.gridy = 8;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtPref,g);
         
         g.gridx = 0;
-        g.gridy = 11;
+        g.gridy = 9;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lblTref,g);
         
         g.gridx = 1;
-        g.gridy = 11;
+        g.gridy = 9;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtTref,g);
         
         g.gridx = 0;
-        g.gridy = 12;
+        g.gridy = 10;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lblTeff,g);
         
         g.gridx = 1;
-        g.gridy = 12;
+        g.gridy = 10;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtTeff,g);
@@ -511,12 +483,8 @@ public class ViewPrincipal extends JFrame{
         return lblP1;
     }
 
-    public JLabel getLblPP() {
-        return lblPP;
-    }
-
-    public JLabel getLblSUBT() {
-        return lblSUBT;
+    public JLabel getLblPconop() {
+        return lblPconop;
     }
 
     public JLabel getLblTf() {
@@ -531,18 +499,14 @@ public class ViewPrincipal extends JFrame{
         return lblcompressor;
     }
 
-    public JLabel getLbleffLT() {
-        return lbleffLT;
+    public JLabel getLbleff() {
+        return lbleff;
     }
 
-    public JLabel getLblzi() {
-        return lblzi;
+    public JLabel getLblG() {
+        return lblG;
     }
-
-    public JLabel getLblVE() {
-        return lblVE;
-    }
-
+    
     public JLabel getLblteste1() {
         return lblteste1;
     }
@@ -559,12 +523,8 @@ public class ViewPrincipal extends JFrame{
         return txtP1;
     }
 
-    public JTextField getTxtPP() {
-        return txtPP;
-    }
-
-    public JTextField getTxtSUBT() {
-        return txtSUBT;
+    public JTextField getTxtPconop() {
+        return txtPconop;
     }
 
     public JTextField getTxtTf() {
@@ -575,16 +535,12 @@ public class ViewPrincipal extends JFrame{
         return txtTres;
     }
 
-    public JTextField getTxteffLt() {
-        return txteffLt;
+    public JTextField getTxteff() {
+        return txteff;
     }
 
-    public JTextField getTxtzi() {
-        return txtzi;
-    }
-
-    public JTextField getTxtVE() {
-        return txtVE;
+    public JTextField getTxtG() {
+        return txtG;
     }
 
     public JTextField getTxtteste1() {
@@ -786,8 +742,6 @@ public class ViewPrincipal extends JFrame{
     public void setTxtteste10(JTextField txtteste10) {
         this.txtteste10 = txtteste10;
     }
-    
-    
 
     public int getComp() {
         return comp;

@@ -26,17 +26,17 @@ public class Start {
     public Start(Session session,ControlPrincipal ctrPrincipal){
         this.session = session;
        
-        double Tref=217;
-        double Pref=10;
+        double Tref= Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtTref().getText());
+        double Pref= Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtPref().getText());
 
-        double Teff=0.8;
-        double Beff=0.8;
-        double eff=0.0;
-        double G=1;
+        double Teff=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtTeff().getText());
+        double Beff=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtBeff().getText());
+        double eff=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxteff().getText());
+        double G=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtG().getText());
 
-        P1=150;
+        P1=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtP1().getText());
         T1=160+273.15;
-        double Pconop=80;
+        double Pconop=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtPconop().getText());
         P2=Pconop;
         double Tconop=40+273.15;
         double T4=40+273.15;
@@ -44,8 +44,8 @@ public class Start {
         double P5=P1;
 
 
-        Tf=408.35;
-        compressor=4;
+        Tf=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtTf().getText());
+        compressor=ctrPrincipal.getViewPrincipal().getComp();
 
 
         //[H1, H2, S1, S2, T2, H2s] = turbina(Teff, P1, T1, P2, Pref, Tref);
@@ -76,6 +76,23 @@ public class Start {
         
         //[Wt, Wb, Qevp, Qcon, ec, Qreg, Qreg1, Wn]=balanco(T1, H1, H2, H3, H4, H5, H6, S1, S2, S3, S4, S5, S6, m, Pref, Tref);
         ControlBalanco balanco = new ControlBalanco(T1, H1, H2, H3, H4, H5, H6, S1, S2, S3, S4, S5, S6, m, Pref, Tref);
-
+        double Wt = balanco.getWt();
+        double Wn = balanco.getWn();
+        double Wb = balanco.getWb();
+        double Qevp = balanco.getQevp();
+        double Qcon = balanco.getQcon();
+        double ec = balanco.getEc();
+        double Qreg = balanco.getQreg();
+        double Qreg1 = balanco.getQreg1();
+        
+        
+        ctrPrincipal.getViewPrincipal().getTxtteste1().setText("Wt: "+Wt);
+        ctrPrincipal.getViewPrincipal().getTxtteste2().setText("Wn: "+Wn);
+        ctrPrincipal.getViewPrincipal().getTxtteste3().setText("Wb: "+Wb);
+        ctrPrincipal.getViewPrincipal().getTxtteste4().setText("Qevp: "+Qevp);
+        ctrPrincipal.getViewPrincipal().getTxtteste5().setText("Qcon: "+Qcon);
+        ctrPrincipal.getViewPrincipal().getTxtteste6().setText("ec: "+ec);
+        ctrPrincipal.getViewPrincipal().getTxtteste7().setText("Qreg"+Qreg);
+        ctrPrincipal.getViewPrincipal().getTxtteste8().setText("Qreg1"+Qreg1);
     }
 }
