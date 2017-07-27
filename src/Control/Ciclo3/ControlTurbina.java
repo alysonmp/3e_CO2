@@ -31,4 +31,70 @@ public class ControlTurbina {
         H2 = controlIsoTurbina.getH2();
         H2s = controlIsoTurbina.getH2s();
     } 
+
+    public double getP4() {
+        return P4;
+    }
+
+    public void setP4(double P4) {
+        this.P4 = P4;
+    }
+
+    public double getT2() {
+        return T2;
+    }
+
+    public void setT2(double T2) {
+        this.T2 = T2;
+    }
+
+    public double getS2() {
+        return S2;
+    }
+
+    public void setS2(double S2) {
+        this.S2 = S2;
+    }
+
+    public double getH2() {
+        return H2;
+    }
+
+    public void setH2(double H2) {
+        this.H2 = H2;
+    }
+
+    public double getP2() {
+        return P2;
+    }
+
+    public void setP2(double P2) {
+        this.P2 = P2;
+    }
+
+    public double getH1() {
+        return H1;
+    }
+
+    public void setH1(double H1) {
+        this.H1 = H1;
+    }
+
+    public double getS1() {
+        return S1;
+    }
+
+    public void setS1(double S1) {
+        this.S1 = S1;
+    }
+
+    public double getH2s() {
+        return H2s;
+    }
+
+    public void setH2s(double H2s) {
+        this.H2s = H2s;
+    }
+    
+    
 }

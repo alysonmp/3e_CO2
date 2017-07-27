@@ -92,4 +92,46 @@ public class ControlBomba {
         s_sistema = new ControlS_Sistema(T5, P5, Pref, Tref,session);
         S5=s_sistema.getSV();
     }
+
+    public double getS4() {
+        return S4;
+    }
+
+    public void setS4(double S4) {
+        this.S4 = S4;
+    }
+
+    public double getH4() {
+        return H4;
+    }
+
+    public void setH4(double H4) {
+        this.H4 = H4;
+    }
+
+    public double getS5() {
+        return S5;
+    }
+
+    public void setS5(double S5) {
+        this.S5 = S5;
+    }
+
+    public double getH5() {
+        return H5;
+    }
+
+    public void setH5(double H5) {
+        this.H5 = H5;
+    }
+
+    public double getT5() {
+        return T5;
+    }
+
+    public void setT5(double T5) {
+        this.T5 = T5;
+    }
+    
+    
 }
