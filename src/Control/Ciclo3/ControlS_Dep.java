@@ -5,6 +5,8 @@
  */
 package Control.Ciclo3;
 
+import org.hibernate.Session;
+
 /**
  *
  * @author alysonmp
@@ -13,7 +15,7 @@ public class ControlS_Dep {
     
     double Pc, Tc, Tr, Pr, F, Omegab, Omegaa, Omegac, A, B, C, N, M, Q, alfa, a, da_dT, Ps2, dif, SDL, SDV;
     
-    public ControlS_Dep(double T, double P){
+    public ControlS_Dep(double T, double P,Session session){
         
         ControlConstantes constantes = new ControlConstantes(T, P);
         
@@ -33,13 +35,13 @@ public class ControlS_Dep {
         N = constantes.getNi();
         M = constantes.getMi();
         Q = constantes.getQi();
-        alfa = constantes.getalfai();
+        alfa = constantes.getAlfai();
         a = constantes.getai();
         
         da_dT = Omegaa*(Math.pow(constantes.getR(),2)*Tc/Pc)*(-F*(Math.pow(alfa,0.5))/(Math.pow(Tr, 0.5)));
         
-        ControlPdeVapor pdevapor = new ControlPdeVapor(T);
-        Ps2 = pdevapor.getPs2();
+        ControlPdeVapor pdevapor = new ControlPdeVapor(T,session);
+        Ps2 = pdevapor.getPsi();
         
         if(Ps2 <= 73.825){
             dif = Math.abs((Ps2-P)/P);
