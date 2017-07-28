@@ -7,6 +7,7 @@ package Ciclo3.View;
 
 import Ciclo3.Control.ControlPrincipal;
 import Ciclo3.Control.Start;
+import Control.Conversao.ControlConverte;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -93,6 +94,17 @@ public class ViewPrincipal extends JFrame{
     private JLabel txtEc = new JLabel("0%");
     private JLabel txtQreg = new JLabel("0");
     
+    //COMBOBOX
+    private String[] pressoes = {"kPa", "bar", "atm"};
+    private String[] temps = {"K", "°C", "°F"};
+    
+    private JComboBox comboPconop = new JComboBox(pressoes);
+    private JComboBox comboPf = new JComboBox(pressoes);
+    private JComboBox comboP1 = new JComboBox(pressoes);
+    private JComboBox comboTconop = new JComboBox(temps);
+    private JComboBox comboTf = new JComboBox(temps);
+    private JComboBox comboT1 = new JComboBox(temps);
+    
     private String[] fluidos = {"Água", "Ar", "Compressor 1", "Compressor 2", "Compressor 3", "Compressor 4", "Compressor 5", "Gases"};
     private JComboBox cmbCompressor = new JComboBox(fluidos);
     
@@ -108,7 +120,11 @@ public class ViewPrincipal extends JFrame{
     
     private int comp = 0;
     
+    private ControlConverte controlConverte;
+    
     public ViewPrincipal(ControlPrincipal ctrPrincipal) {
+        controlConverte = new ControlConverte();
+        
         this.setLayout(new FlowLayout());
         
         painelEntrada.setBorder(BorderFactory.createTitledBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.lightGray), "Entrada", 1, 2, new Font("Times New Roman", 1, 12), Color.darkGray));
@@ -141,6 +157,12 @@ public class ViewPrincipal extends JFrame{
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtPconop,g);
         
+        g.gridx = 3;
+        g.gridy = 1;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(comboPconop,g);
+        
         g.gridx = 0;
         g.gridy = 2;
         g.gridwidth = 1;
@@ -152,6 +174,12 @@ public class ViewPrincipal extends JFrame{
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtTconop,g);
+        
+        g.gridx = 3;
+        g.gridy = 2;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(comboTconop,g);
         
         g.gridx = 0;
         g.gridy = 3;
@@ -165,6 +193,12 @@ public class ViewPrincipal extends JFrame{
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtTf,g);
         
+        g.gridx = 3;
+        g.gridy = 3;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(comboTf,g);
+        
         g.gridx = 0;
         g.gridy = 4;
         g.gridwidth = 1;
@@ -176,6 +210,12 @@ public class ViewPrincipal extends JFrame{
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtPf,g);
+        
+        g.gridx = 3;
+        g.gridy = 4;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(comboPf,g);
         
         g.gridx = 0;
         g.gridy = 5;
@@ -201,6 +241,12 @@ public class ViewPrincipal extends JFrame{
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtP1,g);
 
+        g.gridx = 3;
+        g.gridy = 7;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(comboP1,g);
+        
         g.gridx = 0;
         g.gridy = 8;
         g.gridwidth = 1;
@@ -212,6 +258,12 @@ public class ViewPrincipal extends JFrame{
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtT1,g);
+        
+        g.gridx = 3;
+        g.gridy = 8;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(comboT1,g);
         
         g.gridx = 0;
         g.gridy = 9;
@@ -248,7 +300,7 @@ public class ViewPrincipal extends JFrame{
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtTeff,g);
-            
+        
         g.gridx = 0;
         g.gridy = 12;
         g.gridwidth = 1;
@@ -436,6 +488,26 @@ public class ViewPrincipal extends JFrame{
                         }
                     }
                 }).start();
+            }
+        });
+        
+        comboT1.addItemListener(new ItemListener() {
+            
+            String[] tipo = new String[2];
+            int tip = 0;
+            
+            @Override
+            public void itemStateChanged(ItemEvent ie) {
+                
+                tipo[tip] = ie.getItem().toString();
+                tip++;
+                if(tip == 2){
+                    String valor = txtT1.getText();
+                    if(!valor.isEmpty()){
+                        txtT1.setText(String.valueOf(controlConverte.converte(tipo[0],tipo[1],Double.parseDouble(valor))));
+                    } 
+                    tip = 0;
+                }
             }
         });
     }
