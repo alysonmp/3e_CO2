@@ -5,6 +5,8 @@
  */
 package Control.Ciclo3;
 
+import org.hibernate.Session;
+
 /**
  *
  * @author alysonmp
@@ -13,7 +15,7 @@ public class ControlT_Ref {
     
     double Te, erro, DT, it, Ps2, Burbuja, Tref;
     
-    public ControlT_Ref(double P){
+    public ControlT_Ref(double P, Session session){
         Te = 300;
         erro = 1;
         DT = 80;
@@ -24,8 +26,8 @@ public class ControlT_Ref {
                 //ksakfdsak*ksadksda;
             }
             
-            ControlPdeVapor pdevapor = new ControlPdeVapor(Te);    
-            Ps2 = pdevapor.getPs2();
+            ControlPdeVapor pdevapor = new ControlPdeVapor(Te,session);    
+            Ps2 = pdevapor.getPsi();
             Burbuja = Ps2-P;
             erro = Math.abs((Ps2-P)/Ps2);
             if(erro>0.001 && Burbuja>0){
