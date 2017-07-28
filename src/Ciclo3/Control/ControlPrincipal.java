@@ -232,6 +232,7 @@ public class ControlPrincipal {
         
         viewPrincipal = new ViewPrincipal(this);
         viewPrincipal.setResizable(false);
+        viewPrincipal.setLocation(100, 100);
         viewPrincipal.pack();
         viewPrincipal.setTitle("CO2");
         viewPrincipal.setVisible(true);

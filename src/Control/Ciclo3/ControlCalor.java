@@ -15,7 +15,7 @@ public class ControlCalor {
         Criteria cr = session.createCriteria(ModelQfpso.class); 
         List results = cr.list();
         
-        ModelQfpso q = (ModelQfpso)results.get(compressor-1);
+        ModelQfpso q = (ModelQfpso)results.get(compressor);
         double[] Qfpso = q.getQfpso();
         
         switch (compressor) {
