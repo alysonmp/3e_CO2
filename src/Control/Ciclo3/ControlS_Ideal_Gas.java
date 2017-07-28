@@ -23,7 +23,7 @@ public class ControlS_Ideal_Gas {
         List results = cr.list();
 
         //UTILIZA A PRIMEIRA LINHA BUSCADA, VARIÁVEL CC
-        ModelConstantesMat constantesMat = (ModelConstantesMat)results.get(0); 
+        ModelConstantesMat constantesMat = (ModelConstantesMat)results.get(2); 
         double[][] valores = constantesMat.getValores();
 
         R = 8.314;

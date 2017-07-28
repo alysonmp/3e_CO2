@@ -49,16 +49,18 @@ public class ViewPrincipal extends JFrame{
     //Labels
     //ENTRADA
     private JLabel lblP1 = new JLabel("P1: ");
+    private JLabel lblT1 = new JLabel("T1: ");
     private JLabel lblPconop = new JLabel("Pconop: ");
+    private JLabel lblTconop = new JLabel("Tconop: ");
     private JLabel lblTf = new JLabel("Tf: ");
+    private JLabel lblPf = new JLabel("Pf: ");
+    private JLabel lblMf = new JLabel("Mf: ");
     private JLabel lblTres = new JLabel("Tres: ");
     private JLabel lblcompressor = new JLabel("Compressor: ");
     private JLabel lbleff = new JLabel("eff: ");
-    private JLabel lblG = new JLabel("G: ");
     private JLabel lblBeff = new JLabel("Beff: ");
-    private JLabel lblPref = new JLabel("Pref: ");
-    private JLabel lblTref = new JLabel("Tref: ");
     private JLabel lblTeff = new JLabel("Teff: ");
+    private JLabel lblDtt = new JLabel("DTT: ");
     
     //SAIDA
     private JLabel lblteste1 = new JLabel("teste1: ");
@@ -74,16 +76,18 @@ public class ViewPrincipal extends JFrame{
     
     //TextFields
     //ENTRADA
-    private JTextField txtP1 = new JTextField("150",20);
+    private JTextField txtP1 = new JTextField("150", 20);
+    private JTextField txtT1 = new JTextField("433.15");
     private JTextField txtPconop = new JTextField("80");
+    private JTextField txtTconop = new JTextField("313.15");
     private JTextField txtTf = new JTextField("408.35");
+    private JTextField txtPf = new JTextField("408.35");
+    private JTextField txtMf = new JTextField("408.35");
     private JTextField txtTres = new JTextField("298.15");
     private JTextField txteff = new JTextField("0.0");
-    private JTextField txtG = new JTextField("1");
     private JTextField txtBeff = new JTextField("0.8");
-    private JTextField txtPref = new JTextField("10");
-    private JTextField txtTref = new JTextField("217");
     private JTextField txtTeff = new JTextField("0.8");
+    private JTextField txtDtt = new JTextField("0.8");
     
     //SAIDA
     private JTextField txtteste1 = new JTextField(20);
@@ -149,110 +153,134 @@ public class ViewPrincipal extends JFrame{
         g.gridy = 2;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(lblTf,g);
+        painelEntrada.add(lblTconop,g);
         
         g.gridx = 1;
         g.gridy = 2;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(txtTf,g);
+        painelEntrada.add(txtTconop,g);
         
         g.gridx = 0;
         g.gridy = 3;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(lblTf,g);
+        
+        g.gridx = 1;
+        g.gridy = 3;
+        g.gridwidth = 2;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(txtTf,g);
+        
+        g.gridx = 0;
+        g.gridy = 4;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(lblPf,g);
+        
+        g.gridx = 1;
+        g.gridy = 4;
+        g.gridwidth = 2;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(txtPf,g);
+        
+        g.gridx = 0;
+        g.gridy = 5;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(lblMf,g);
+        
+        g.gridx = 1;
+        g.gridy = 5;
+        g.gridwidth = 2;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(txtMf,g);
+        
+        g.gridx = 0;
+        g.gridy = 6;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lblTres,g);
         
         g.gridx = 1;
-        g.gridy = 3;
+        g.gridy = 6;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtTres,g);
         
         g.gridx = 0;
-        g.gridy = 4;
+        g.gridy = 7;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lblP1,g);
 
         g.gridx = 1;
-        g.gridy = 4;
+        g.gridy = 7;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtP1,g);
 
         g.gridx = 0;
-        g.gridy = 5;
+        g.gridy = 8;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(lblT1,g);
+
+        g.gridx = 1;
+        g.gridy = 8;
+        g.gridwidth = 2;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(txtT1,g);
+        
+        g.gridx = 0;
+        g.gridy = 9;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lbleff,g);
         
         g.gridx = 1;
-        g.gridy = 5;
+        g.gridy = 9;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txteff,g);
         
         g.gridx = 0;
-        g.gridy = 6;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(lblG,g);
-        
-        g.gridx = 1;
-        g.gridy = 6;
-        g.gridwidth = 2;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(txtG,g);
-        
-        g.gridx = 0;
-        g.gridy = 7;
+        g.gridy = 10;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lblBeff,g);
         
         g.gridx = 1;
-        g.gridy = 7;
+        g.gridy = 10;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtBeff,g);
         
         g.gridx = 0;
-        g.gridy = 8;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(lblPref,g);
-        
-        g.gridx = 1;
-        g.gridy = 8;
-        g.gridwidth = 2;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(txtPref,g);
-        
-        g.gridx = 0;
-        g.gridy = 9;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(lblTref,g);
-        
-        g.gridx = 1;
-        g.gridy = 9;
-        g.gridwidth = 2;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(txtTref,g);
-        
-        g.gridx = 0;
-        g.gridy = 10;
+        g.gridy = 11;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lblTeff,g);
         
         g.gridx = 1;
-        g.gridy = 10;
+        g.gridy = 11;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtTeff,g);
-                
+            
+        g.gridx = 0;
+        g.gridy = 12;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(lblDtt,g);
+        
+        g.gridx = 1;
+        g.gridy = 12;
+        g.gridwidth = 2;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(txtDtt,g);
+        
         //PAINEL SAIDA
         g.gridx = 0;
         g.gridy = 0;
@@ -398,37 +426,37 @@ public class ViewPrincipal extends JFrame{
         cmbCompressor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                int FON = cmbCompressor.getSelectedIndex();
+                int FON = cmbCompressor.getSelectedIndex()+1;
                 switch(FON){
-                    case 2:
-                        comp = 1;
-                        //m = 55.54;
-                        txtTf.setText(415.15+"");
-                        //Pf = 1144.4;
-                        break;
                     case 3:
+                        comp = 1;
+                        txtMf.setText(55.54+"");
+                        txtTf.setText(415.15+"");
+                        txtPf.setText(1144.4+"");
+                        break;
+                    case 4:
                         comp = 2;
-                        //m = 55.54;
+                        txtMf.setText(55.54+"");
                         txtTf.setText(417.15+"");
-                        //Pf = 3133.8;
+                        txtPf.setText(3133.8+"");
                         break;
-                    case 4: 
+                    case 5: 
                         comp = 3;
-                        //m = 55.54;
+                        txtMf.setText(55.54+"");
                         txtTf.setText(418.15+"");
-                        //Pf = 8825.6;
+                        txtPf.setText(8825.6+"");
                         break;
-                    case 5:
+                    case 6:
                         comp = 4;
-                        //m = 55.54;
-                        txtTf.setText(408.35+"");
-                        //Pf = 25109;
+                        txtMf.setText(55.54+"");
+                        txtTf.setText(408.15+"");
+                        txtPf.setText(25109+"");
                         break;
-                    case 6: 
+                    case 7: 
                         comp = 5;
-                        //m = 61.78;
+                        txtMf.setText(61.78+"");
                         txtTf.setText(431.15+"");
-                        //Pf = 8196.1;
+                        txtPf.setText(8196.1+"");
                         break;
                     default:
                         comp = 0;
@@ -502,10 +530,6 @@ public class ViewPrincipal extends JFrame{
     public JLabel getLbleff() {
         return lbleff;
     }
-
-    public JLabel getLblG() {
-        return lblG;
-    }
     
     public JLabel getLblteste1() {
         return lblteste1;
@@ -537,10 +561,6 @@ public class ViewPrincipal extends JFrame{
 
     public JTextField getTxteff() {
         return txteff;
-    }
-
-    public JTextField getTxtG() {
-        return txtG;
     }
 
     public JTextField getTxtteste1() {
@@ -575,22 +595,6 @@ public class ViewPrincipal extends JFrame{
         this.lblBeff = lblBeff;
     }
 
-    public JLabel getLblPref() {
-        return lblPref;
-    }
-
-    public void setLblPref(JLabel lblPref) {
-        this.lblPref = lblPref;
-    }
-
-    public JLabel getLblTref() {
-        return lblTref;
-    }
-
-    public void setLblTref(JLabel lblTref) {
-        this.lblTref = lblTref;
-    }
-
     public JLabel getLblTeff() {
         return lblTeff;
     }
@@ -621,22 +625,6 @@ public class ViewPrincipal extends JFrame{
 
     public void setTxtBeff(JTextField txtBeff) {
         this.txtBeff = txtBeff;
-    }
-
-    public JTextField getTxtPref() {
-        return txtPref;
-    }
-
-    public void setTxtPref(JTextField txtPref) {
-        this.txtPref = txtPref;
-    }
-
-    public JTextField getTxtTref() {
-        return txtTref;
-    }
-
-    public void setTxtTref(JTextField txtTref) {
-        this.txtTref = txtTref;
     }
 
     public JTextField getTxtTeff() {
@@ -749,6 +737,38 @@ public class ViewPrincipal extends JFrame{
 
     public void setComp(int comp) {
         this.comp = comp;
+    }
+
+    public JTextField getTxtDtt() {
+        return txtDtt;
+    }
+
+    public void setTxtDtt(JTextField txtDtt) {
+        this.txtDtt = txtDtt;
+    }
+
+    public JTextField getTxtT1() {
+        return txtT1;
+    }
+
+    public void setTxtT1(JTextField txtT1) {
+        this.txtT1 = txtT1;
+    }
+
+    public JTextField getTxtPf() {
+        return txtPf;
+    }
+
+    public void setTxtPf(JTextField txtPf) {
+        this.txtPf = txtPf;
+    }
+
+    public JTextField getTxtMf() {
+        return txtMf;
+    }
+
+    public void setTxtMf(JTextField txtMf) {
+        this.txtMf = txtMf;
     }
     
 }
