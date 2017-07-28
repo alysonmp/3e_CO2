@@ -92,13 +92,21 @@ public class Start {
         double Qreg1 = balanco.getQreg1();
         
         
-        ctrPrincipal.getViewPrincipal().getTxtteste1().setText("Wt: "+Wt);
-        ctrPrincipal.getViewPrincipal().getTxtteste2().setText("Wn: "+Wn);
-        ctrPrincipal.getViewPrincipal().getTxtteste3().setText("Wb: "+Wb);
-        ctrPrincipal.getViewPrincipal().getTxtteste4().setText("Qevp: "+Qevp);
-        ctrPrincipal.getViewPrincipal().getTxtteste5().setText("Qcon: "+Qcon);
-        ctrPrincipal.getViewPrincipal().getTxtteste6().setText("ec: "+ec+"%");
-        ctrPrincipal.getViewPrincipal().getTxtteste7().setText("Qreg"+Qreg);
-        ctrPrincipal.getViewPrincipal().getTxtteste8().setText("Qreg1"+Qreg1);
+        ctrPrincipal.getViewPrincipal().getTxtWt().setText(""+round(Wt, 3));
+        ctrPrincipal.getViewPrincipal().getTxtWb().setText(""+round(Wb, 3));
+        ctrPrincipal.getViewPrincipal().getTxtWn().setText(""+round(Wn, 3));
+        ctrPrincipal.getViewPrincipal().getTxtQevp().setText(""+round(Qevp, 3));
+        ctrPrincipal.getViewPrincipal().getTxtQcon().setText(""+round(Qcon, 3));
+        ctrPrincipal.getViewPrincipal().getTxtEc().setText(""+round(ec, 3)+" %");
+        ctrPrincipal.getViewPrincipal().getTxtQreg().setText(""+round(Qreg, 3));
+    }
+    
+    public double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 }
