@@ -61,6 +61,7 @@ public class ControlS_Dep {
                 }
             }
         }else{
+            //PERGUNTAR CESAR SE É ZL OU ZV
             SDL=((-constantes.getR()*Math.log(P/(zeta.getZl()-B)))-(da_dT*((1/(2*N))*(Math.log((zeta.getZl()+M)/(zeta.getZl()+Q))))))*100000;
             SDV=((-constantes.getR()*Math.log(P/(zeta.getZv()-B)))-(da_dT*((1/(2*N))*(Math.log((zeta.getZv()+M)/(zeta.getZv()+Q))))))*100000;
         }

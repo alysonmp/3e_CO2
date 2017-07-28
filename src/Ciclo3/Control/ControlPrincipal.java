@@ -142,15 +142,14 @@ public class ControlPrincipal {
         results = cr.list();
         if(results.isEmpty()){
             Transaction tx = session.beginTransaction();
-            
-            double[][] valoresC1 = {{90.483, -4669.7, -11.607, 0.017194, 1.0}};
+
+            double[][] valoresC1 = {{35.0187, -1511.9, -11.335, 0.0093383, 7.7626E-10}};
             session.save(new ModelConstantesMat("C1", valoresC1));
             
             double[][] valoresC2 = {{73.649, -7258.2, -7.3037, 4.1653E-6, 2.0}};
             session.save(new ModelConstantesMat("C2", valoresC2));
 
-            double[][] valoresCC = {{33.60134, -0.002145, -3.999E-6, 4.752E-8, -3.533E-11, 0.0, 0.0}, 
-                                    {33.573, -0.012581, 8.8906E-5, -7.1783E-8, 1.8569E-11, 0.0, 0.0}};
+            double[][] valoresCC = {{27.437, 0.042315, -1.9555E-5, 3.9968E-9, -2.9872E-13, 0.0, 0.0}};
             session.save(new ModelConstantesMat("CC", valoresCC));
             
             tx.commit();

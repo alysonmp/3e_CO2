@@ -49,15 +49,15 @@ public class ControlZeta {
                 Z2m = x3;
             }
         }else{
-            if(complexo1.getImaginario() == 0){
+            if(complexo1.getImaginario() != 0){
                 x1 = 0;
             }
 
-            if(complexo2.getImaginario() == 0){
+            if(complexo2.getImaginario() != 0){
                 x2 = 0;
             }
 
-            if(complexo3.getImaginario() == 0){
+            if(complexo3.getImaginario() != 0){
                 x3 = 0;
             }
             
