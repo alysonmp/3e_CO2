@@ -15,6 +15,8 @@ public class ControlRegenerador {
 
     private double S3, H3, S6, H6, T3, T6, IHR;
     
+    private String mensagem = "";
+    
     public ControlRegenerador(double G, double H2, double  H5, double  S2, double  S5, double  P2, double  T2, double  P5, double  T5, double  P1, double  Pconop, double  Tconop, double  Pref, double  Tref, double  eff, Session session) {
         double P6=P1;
         double P3=Pconop;
@@ -46,7 +48,7 @@ public class ControlRegenerador {
                 while(erro>0.0001){
                     it=it+1;
                     if(it > 10000){
-                        //kkkkk=kkkkk*PPPPPP
+                        mensagem = "Erro control Regenerador";
                         return;
                     }
                     h_sistema = new ControlH_Sistema(Test, P6, Pref, Tref,session);
@@ -72,56 +74,8 @@ public class ControlRegenerador {
                 S6=s_sistema.getSL();
                 IHR=eff;
             }else{ 
-                if(G==1){
-                    //disp('Não é possivél fazer Regeneração')
-                    //disp('T2 é menor o igual que T5')
-                    //disp('')
-                    //disp('')
-                }
-                H3=H2;
-                T3=T2;
-                S3=S2;
-                H6=H5;
-                T6=T5;
-                S6=S5;
-                IHR=0;
-                //kkk*pppp*ttrfgd*iogffdgfjhj
+                mensagem = "Não foi possível fazer regeneração";
             }
-        }
-        
-
-        double DT11=T6+10;
-        double DT12=T5+10;
-        if(T2<=DT11 && IHR>0){ 
-             H3=H2;
-                T3=T2;
-                S3=S2;
-                H6=H5;
-                T6=T5;
-                S6=S5;
-                IHR=0;
-                //kkk*pppp*ttrfgd*iogffdgfjhj
-        }
-        if(IHR>0 && T3<=DT12){
-            H3=H2;
-            T3=T2;
-            S3=S2;
-            H6=H5;
-            T6=T5;
-            S6=S5;
-            IHR=0;
-            //kkk*pppp*ttrfgd*iogffdgfjhj
-        }
-        double DT13=T6-T5;
-        if(DT13<=10){ 
-            H3=H2;
-            T3=T2;
-            S3=S2;
-            H6=H5;
-            T6=T5;
-            S6=S5;
-            IHR=0;
-            //kkk*pppp*ttrfgd*iogffdgfjhj
         }
         
     }
@@ -180,6 +134,14 @@ public class ControlRegenerador {
 
     public void setIHR(double IHR) {
         this.IHR = IHR;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
     }
     
     

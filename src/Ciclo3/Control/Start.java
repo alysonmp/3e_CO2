@@ -51,6 +51,10 @@ public class Start {
 
         //[H1, H2, S1, S2, T2, H2s] = turbina(Teff, P1, T1, P2, Pref, Tref);
         ControlTurbina turbina = new ControlTurbina(Teff, P1, T1, P2, Pref, Tref, session);
+        if(!turbina.getMensagem().equals("")){
+            JOptionPane.showMessageDialog(null,turbina.getMensagem(),"Error",0);
+            return;
+        }
         double H2 = turbina.getH2();
         double S2 = turbina.getS2();
         double T2 = turbina.getT2();
@@ -67,6 +71,11 @@ public class Start {
         
         //[S3, H3, S6, H6, T3, T6, IHR] = Regenerador(G, H2, H5, S2, S5, P2, T2, P5, T5, P1, Pconop, Tconop, Pref, Tref, eff);
         ControlRegenerador regenerador = new ControlRegenerador(G, H2, H5, S2, S5, P2, T2, P5, T5, P1, Pconop, Tconop, Pref, Tref, eff, session);
+        if(!regenerador.getMensagem().equals("")){
+            JOptionPane.showMessageDialog(null,regenerador.getMensagem(),"Error",0);
+            return;
+        }
+        
         double H3 = regenerador.getH3();
         double H6 = regenerador.getH6();
         double S3 = regenerador.getS3();

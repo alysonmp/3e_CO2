@@ -15,6 +15,8 @@ public class ControlTurbina {
    
     private double P4, T2, S2, H2, P2, H1, S1, H2s;
     
+    private String mensagem = "";
+    
     public ControlTurbina(double Teff, double P1, double T1, double Pconop, double Pref, double Tref, Session session){
         ControlH_Sistema h_sistema = new ControlH_Sistema(T1, P1, Pref, Tref, session);
         ControlS_Sistema s_sistema = new ControlS_Sistema(T1, P1, Pref, Tref, session);
@@ -25,6 +27,10 @@ public class ControlTurbina {
         P2 = Pconop;
         
         ControlIsoentropiaTurbina controlIsoTurbina = new ControlIsoentropiaTurbina(Teff, P2, Pref, Tref, S1, H1, T1, session);
+        if(!controlIsoTurbina.getMensagem().equals("")){
+            mensagem = controlIsoTurbina.getMensagem();
+            return;
+        }
         
         T2 = controlIsoTurbina.getT2();
         S2 = controlIsoTurbina.getS2();
@@ -95,6 +101,12 @@ public class ControlTurbina {
     public void setH2s(double H2s) {
         this.H2s = H2s;
     }
-    
-    
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
 }

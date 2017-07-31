@@ -118,6 +118,7 @@ public class ControlIsoentropiaTurbina {
                 if(x2 < 0.99){
                     //Pasar=oiu*uy6r7*988
                     mensagem = "Erro Isoentropia Turbina";
+                    return;
                 }else{
                     T2=Test;
                    h_sistema = new ControlH_Sistema(T2, P2, Pref, Tref,session);
@@ -159,6 +160,14 @@ public class ControlIsoentropiaTurbina {
 
     public void setH2s(double H2s) {
         this.H2s = H2s;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
     }
     
     
