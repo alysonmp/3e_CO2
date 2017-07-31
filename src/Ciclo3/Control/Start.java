@@ -19,11 +19,8 @@ import org.hibernate.Session;
  */
 public class Start {
     
-    double P1, PP, SUBT, Tf, effLT, zi, VE, P2, Pf, DT1, T1, ec, Mf;
     Session session;
-    
-    int compressor;
-    
+        
     public Start(Session session, ControlPrincipal ctrPrincipal){
         this.session = session;
        
@@ -35,21 +32,21 @@ public class Start {
         double eff=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxteff().getText());
         double DTT=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtDtt().getText());
 
-        P1=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtP1().getText());
-        T1=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtT1().getText());
+        double P1=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtP1().getText());
+        double T1=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtT1().getText());
         double Pconop=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtPconop().getText());
         double Tconop=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtPconop().getText());
         
         double G=1;
-        P2=Pconop;
+        double P2=Pconop;
         double T4=40+273.15;
         double P4=Pconop;
         double P5=P1;
 
-        Tf=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtTf().getText());
-        Pf=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtPf().getText());
-        Mf=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtMf().getText());
-        compressor=ctrPrincipal.getViewPrincipal().getComp();
+        double Tf=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtTf().getText());
+        double Pf=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtPf().getText());
+        double Mf=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtMf().getText());
+        int compressor=ctrPrincipal.getViewPrincipal().getComp();
 
 
         //[H1, H2, S1, S2, T2, H2s] = turbina(Teff, P1, T1, P2, Pref, Tref);

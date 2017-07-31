@@ -63,24 +63,13 @@ import Ciclo3.Model.ModelQfpso;
 import Ciclo3.Model.TabelasFluidos.ModelButanoGas;
 import Ciclo3.Util.HibernateUtil;
 import Ciclo3.View.ViewPrincipal;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
+
 
 /**
  *
@@ -88,7 +77,6 @@ import org.hibernate.criterion.Restrictions;
  */
 public class ControlPrincipal {
     private ViewPrincipal viewPrincipal;
-    private ArrayList<JPanel> panel_usado = new ArrayList();
     Session session;
     
     @SuppressWarnings("empty-statement")
@@ -246,15 +234,7 @@ public class ControlPrincipal {
     public void setViewPrincipal(ViewPrincipal viewPrincipal) {
         this.viewPrincipal = viewPrincipal;
     }
-
-    public ArrayList<JPanel> getPanel_usado() {
-        return panel_usado;
-    }
-
-    public void setPanel_usado(ArrayList<JPanel> panel_usado) {
-        this.panel_usado = panel_usado;
-    }
-
+    
     public Session getSession() {
         return session;
     }
