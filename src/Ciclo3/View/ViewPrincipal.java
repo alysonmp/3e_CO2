@@ -8,38 +8,22 @@ package Ciclo3.View;
 import Ciclo3.Control.ControlPrincipal;
 import Ciclo3.Control.Start;
 import Control.Conversao.ControlConverte;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.ComponentOrientation;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -106,7 +90,7 @@ public class ViewPrincipal extends JFrame{
     private JComboBox comboT1 = new JComboBox(temps);
     
     private String[] fluidos = {"Água", "Ar", "Compressor 1", "Compressor 2", "Compressor 3", "Compressor 4", "Compressor 5", "Gases"};
-    private JComboBox cmbCompressor = new JComboBox(fluidos);
+    private JComboBox comboCompressor = new JComboBox(fluidos);
     
     //BUTTON
     private JButton btnCalcular = new JButton("Calcular");
@@ -143,172 +127,172 @@ public class ViewPrincipal extends JFrame{
         g.gridy = 0;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(cmbCompressor,g);
+        painelEntrada.add(comboCompressor,g);
         
         g.gridx = 0;
         g.gridy = 1;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(lblPconop,g);
-        
-        g.gridx = 1;
-        g.gridy = 1;
-        g.gridwidth = 2;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(txtPconop,g);
-        
-        g.gridx = 3;
-        g.gridy = 1;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(comboPconop,g);
-        
-        g.gridx = 0;
-        g.gridy = 2;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(lblTconop,g);
-        
-        g.gridx = 1;
-        g.gridy = 2;
-        g.gridwidth = 2;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(txtTconop,g);
-        
-        g.gridx = 3;
-        g.gridy = 2;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(comboTconop,g);
-        
-        g.gridx = 0;
-        g.gridy = 3;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(lblTf,g);
-        
-        g.gridx = 1;
-        g.gridy = 3;
-        g.gridwidth = 2;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(txtTf,g);
-        
-        g.gridx = 3;
-        g.gridy = 3;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(comboTf,g);
-        
-        g.gridx = 0;
-        g.gridy = 4;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(lblPf,g);
-        
-        g.gridx = 1;
-        g.gridy = 4;
-        g.gridwidth = 2;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(txtPf,g);
-        
-        g.gridx = 3;
-        g.gridy = 4;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(comboPf,g);
-        
-        g.gridx = 0;
-        g.gridy = 5;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(lblMf,g);
-        
-        g.gridx = 1;
-        g.gridy = 5;
-        g.gridwidth = 2;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(txtMf,g);
-        
-        g.gridx = 0;
-        g.gridy = 7;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(lblP1,g);
-
-        g.gridx = 1;
-        g.gridy = 7;
-        g.gridwidth = 2;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(txtP1,g);
-
-        g.gridx = 3;
-        g.gridy = 7;
-        g.gridwidth = 1;
-        g.fill = GridBagConstraints.HORIZONTAL;
-        painelEntrada.add(comboP1,g);
-        
-        g.gridx = 0;
-        g.gridy = 8;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lblT1,g);
 
         g.gridx = 1;
-        g.gridy = 8;
+        g.gridy = 1;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtT1,g);
-        
+
         g.gridx = 3;
-        g.gridy = 8;
+        g.gridy = 1;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(comboT1,g);
         
         g.gridx = 0;
-        g.gridy = 9;
+        g.gridy = 2;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(lblP1,g);
+
+        g.gridx = 1;
+        g.gridy = 2;
+        g.gridwidth = 2;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(txtP1,g);
+        
+        g.gridx = 3;
+        g.gridy = 2;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(comboP1,g);
+        
+        g.gridx = 0;
+        g.gridy = 3;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(lblPconop,g);
+        
+        g.gridx = 1;
+        g.gridy = 3;
+        g.gridwidth = 2;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(txtPconop,g);
+        
+        g.gridx = 3;
+        g.gridy = 3;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(comboPconop,g);
+        
+        g.gridx = 0;
+        g.gridy = 4;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(lblTconop,g);
+        
+        g.gridx = 1;
+        g.gridy = 4;
+        g.gridwidth = 2;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(txtTconop,g);
+        
+        g.gridx = 3;
+        g.gridy = 4;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(comboTconop,g);
+        
+        g.gridx = 0;
+        g.gridy = 5;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(lblTf,g);
+        
+        g.gridx = 1;
+        g.gridy = 5;
+        g.gridwidth = 2;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(txtTf,g);
+        
+        g.gridx = 3;
+        g.gridy = 5;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(comboTf,g);
+        
+        g.gridx = 0;
+        g.gridy = 6;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(lblPf,g);
+        
+        g.gridx = 1;
+        g.gridy = 6;
+        g.gridwidth = 2;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(txtPf,g);
+        
+        g.gridx = 3;
+        g.gridy = 6;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(comboPf,g);
+        
+        g.gridx = 0;
+        g.gridy = 7;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(lblMf,g);
+        
+        g.gridx = 1;
+        g.gridy = 7;
+        g.gridwidth = 2;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(txtMf,g);
+        
+        g.gridx = 0;
+        g.gridy = 8;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lbleff,g);
         
         g.gridx = 1;
-        g.gridy = 9;
+        g.gridy = 8;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txteff,g);
         
         g.gridx = 0;
-        g.gridy = 10;
+        g.gridy = 9;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lblBeff,g);
         
         g.gridx = 1;
-        g.gridy = 10;
+        g.gridy = 9;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtBeff,g);
         
         g.gridx = 0;
-        g.gridy = 11;
+        g.gridy = 10;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lblTeff,g);
         
         g.gridx = 1;
-        g.gridy = 11;
+        g.gridy = 10;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtTeff,g);
         
         g.gridx = 0;
-        g.gridy = 12;
+        g.gridy = 11;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lblDtt,g);
         
         g.gridx = 1;
-        g.gridy = 12;
+        g.gridy = 11;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtDtt,g);
@@ -408,10 +392,10 @@ public class ViewPrincipal extends JFrame{
      
         this.add(painelDados);
         
-        cmbCompressor.addActionListener(new ActionListener() {
+        comboCompressor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                int FON = cmbCompressor.getSelectedIndex()+1;
+                int FON = comboCompressor.getSelectedIndex()+1;
                 switch(FON){
                     case 3:
                         comp = 1;
