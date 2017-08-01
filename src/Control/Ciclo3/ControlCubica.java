@@ -1,7 +1,6 @@
 package Control.Ciclo3;
 
 import Ciclo3.Model.ModelComplexo;
-import javax.swing.JOptionPane;
 
 public class ControlCubica {
 

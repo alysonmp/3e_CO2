@@ -5,17 +5,16 @@
  */
 package Ciclo3.Control;
 
+import Ciclo3.Dao.ControlConexao;
 import Ciclo3.Model.ModelConstantesMat;
 import Ciclo3.Model.ModelFluidos;
 import Ciclo3.Model.ModelQfpso;
 import Ciclo3.Util.HibernateUtil;
 import Ciclo3.View.ViewPrincipal;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -31,11 +30,13 @@ import org.hibernate.Transaction;
  */
 public class ControlPrincipal {
     private ViewPrincipal viewPrincipal;
-    Session session;
+    private Session session;
+    private ControlConexao conexao;
     
     @SuppressWarnings("empty-statement")
     
     public ControlPrincipal(){
+        conexao = new ControlConexao();
         SessionFactory sf = HibernateUtil.getSessionFactory();
         this.session = sf.openSession();
         
@@ -118,7 +119,18 @@ public class ControlPrincipal {
         viewPrincipal.pack();
         viewPrincipal.setTitle("CO2");
         viewPrincipal.setVisible(true);
-        viewPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        viewPrincipal.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        viewPrincipal.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e){
+                try {
+                    conexao.getConn().close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControlPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.exit(0);
+            }
+        });
     }
  
     public ViewPrincipal getViewPrincipal() {
