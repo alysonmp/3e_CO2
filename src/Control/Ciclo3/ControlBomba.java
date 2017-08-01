@@ -5,7 +5,6 @@
  */
 package Control.Ciclo3;
 
-import Control.Ciclo3.ControlConstantes;
 import org.hibernate.Session;
 
 /**
