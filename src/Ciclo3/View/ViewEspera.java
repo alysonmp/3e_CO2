@@ -26,7 +26,7 @@ public class ViewEspera{
     private JLabel labelMensagem;
     
     public ViewEspera(ControlPrincipal ctrlPrincipal) {
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon("src/Ciclo1/Images/loading4.gif").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon("src/Ciclo3/Images/loading4.gif").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
         
         labelEspera = new JLabel(imageIcon);
         panelEspera = new JPanel();

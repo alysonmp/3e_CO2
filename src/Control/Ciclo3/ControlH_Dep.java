@@ -15,6 +15,7 @@ public class ControlH_Dep {
     
     private double  HDL, HDV;
     private Session session;
+    private String mensagem = "";
     
     public ControlH_Dep(double T, double P, Session session){
         this.session = session;
@@ -43,6 +44,10 @@ public class ControlH_Dep {
         double da_dT=Omegaa*(Math.pow(constantes.getR(), 2)*Tc/Pc)*(-F*(Math.pow(alfa, 0.5))/(Math.pow(Tr,0.5)));
         
         ControlPdeVapor pVapor = new ControlPdeVapor(T, this.session);
+        if(!pVapor.getMensagem().equals("")) {
+        		this.mensagem = pVapor.getMensagem();
+        		return;
+        }
         double Ps2 = pVapor.getPsi();
         
         if(Ps2 <=73.825){
@@ -87,5 +92,13 @@ public class ControlH_Dep {
 
     public void setHDV(double HDV) {
         this.HDV = HDV;
+    }
+    
+    public String getMensagem() {
+    		return mensagem;
+    }
+    
+    public void setMensagem(String mensagem) {
+    		this.mensagem = mensagem;
     }
 }

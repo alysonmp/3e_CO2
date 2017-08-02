@@ -48,6 +48,10 @@ public class ControlIsoentropiaTurbina {
             }
           
             ControlH_Sistema h_sistema = new ControlH_Sistema(Test, P2, Pref, Tref,session);
+            if(!h_sistema.getMensagem().equals("")) {
+	        		this.mensagem = h_sistema.getMensagem();
+	        		return;
+	        }
             H2s=h_sistema.getHV();
             H2=(-(H1-H2s)*Teff)+H1;
             if(H2>H2s){
@@ -76,12 +80,20 @@ public class ControlIsoentropiaTurbina {
             }
             T2=Test;
             h_sistema = new ControlH_Sistema(T2, P2, Pref, Tref,session);
+            if(!h_sistema.getMensagem().equals("")) {
+	        		this.mensagem = h_sistema.getMensagem();
+	        		return;
+	        }
             s_sistema = new ControlS_Sistema(T2, P2, Pref, Tref,session);
             H2=h_sistema.getHV();
             S2=s_sistema.getSV();
         }else{
             double x=(S1-s_sistema.getSL())/(s_sistema.getSV()-s_sistema.getSL());
             ControlH_Sistema h_sistema = new ControlH_Sistema(Test, P2, Pref, Tref,session);
+            if(!h_sistema.getMensagem().equals("")) {
+	        		this.mensagem = h_sistema.getMensagem();
+	        		return;
+	        }
             H2s=(h_sistema.getHV()*x)+(h_sistema.getHL()*(1-x));
             H2=(-(H1-H2s)*Teff)+H1;
             double DT=120;
@@ -91,6 +103,10 @@ public class ControlIsoentropiaTurbina {
                 double erro=1;
                 while(erro>0.0001){
                     h_sistema = new ControlH_Sistema(Test, P2, Pref, Tref,session);
+                    if(!h_sistema.getMensagem().equals("")) {
+		    	        		this.mensagem = h_sistema.getMensagem();
+		    	        		return;
+		    	        }
                     H = h_sistema.getHV();
                     erro = Math.abs((H2-H)/H2);
                     Burbuja = H2-H;
@@ -110,6 +126,10 @@ public class ControlIsoentropiaTurbina {
                 }
                 T2=Test;
                 h_sistema = new ControlH_Sistema(T2, P2, Pref, Tref,session);
+                if(!h_sistema.getMensagem().equals("")) {
+		        		this.mensagem = h_sistema.getMensagem();
+		        		return;
+		        }
                 s_sistema = new ControlS_Sistema(T2, P2, Pref, Tref,session) ;
                 H2=h_sistema.getHV();
                 S2=s_sistema.getSV();
@@ -122,6 +142,10 @@ public class ControlIsoentropiaTurbina {
                 }else{
                     T2=Test;
                    h_sistema = new ControlH_Sistema(T2, P2, Pref, Tref,session);
+                   if(!h_sistema.getMensagem().equals("")) {
+		   	        		this.mensagem = h_sistema.getMensagem();
+		   	        		return;
+		   	        }
                    s_sistema = new ControlS_Sistema(T2, P2, Pref, Tref,session) ;
                    H2=(h_sistema.getHV()*x2)+(h_sistema.getHL()*(1-x2));
                    S2=(s_sistema.getSV()*x2)+(s_sistema.getSL()*(1-x2));    

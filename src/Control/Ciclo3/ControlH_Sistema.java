@@ -14,9 +14,15 @@ import org.hibernate.Session;
 public class ControlH_Sistema {
     
     private double HDrefL, HDrefV, Hig, HDL, HDV, HL, HV;
+    private String mensagem = "";
     
     public ControlH_Sistema(double T, double P, double Pref, double Tref, Session session){
         ControlH_Dep Hdep = new ControlH_Dep(Tref, Pref,session);
+        if(!Hdep.getMensagem().equals("")) {
+        		this.mensagem = Hdep.getMensagem();
+        		return;
+        }
+        
         HDrefL = Hdep.getHDL();
         HDrefV = Hdep.getHDV();
         
@@ -24,6 +30,11 @@ public class ControlH_Sistema {
         Hig = HIdealgas.getHig();
 
         Hdep = new ControlH_Dep(T, P, session);
+        if(!Hdep.getMensagem().equals("")) {
+	    		this.mensagem = Hdep.getMensagem();
+	    		return;
+	    }
+        
         HDL = Hdep.getHDL();
         HDV = Hdep.getHDV();
                 
@@ -47,4 +58,12 @@ public class ControlH_Sistema {
     public void setHV(double HV) {
         this.HV = HV;
     }
+    
+    public String getMensagem() {
+		return mensagem;
+	}
+	
+	public void setMensagem(String mensagem) {
+			this.mensagem = mensagem;
+	}
 }
