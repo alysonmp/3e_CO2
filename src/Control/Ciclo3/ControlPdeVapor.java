@@ -17,6 +17,7 @@ import org.hibernate.Session;
 public class ControlPdeVapor {
 
     private double Psi;
+    private String mensagem = "";
     
     public ControlPdeVapor(double T, Session session) {
         //RECUPERA TODOS OS DADOS DA TABELA DE CONSTANTES
@@ -27,6 +28,10 @@ public class ControlPdeVapor {
         ModelConstantesMat constantesMat = (ModelConstantesMat)results.get(0); 
         double[][] valores = constantesMat.getValores();
 
+        if(T < 216.58) {
+        		mensagem = "Com os parâmetros inseridos não é possível atingir a convergência";
+        		return;
+        }
 
         if(T>=216.58 && T<=304.1999999999999999999){
             //Psi=((10^(C1(1)+(C1(2)/T)+(C1(3)*log10(T))+(C1(4)*T)+((T^2*C1(5))))))*1.33E-03;
@@ -46,7 +51,13 @@ public class ControlPdeVapor {
         this.Psi = Psi;
     }
  
+    public String getMensagem() {
+    		return mensagem;
+    }
     
+    public void setMensagem(String mensagem) {
+    		this.mensagem = mensagem;
+    }
     
 }
 
