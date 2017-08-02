@@ -34,7 +34,6 @@ public class ControlPrincipal {
     private ControlConexao conexao;
     
     @SuppressWarnings("empty-statement")
-    
     public ControlPrincipal(){
         conexao = new ControlConexao();
         SessionFactory sf = HibernateUtil.getSessionFactory();

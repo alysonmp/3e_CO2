@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,7 +27,7 @@ public class ViewEspera{
     private JLabel labelMensagem;
     
     public ViewEspera(ControlPrincipal ctrlPrincipal) {
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon("src/Ciclo1/Images/loading4.gif").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon("src/Ciclo3/Images/loading4.gif").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
         
         labelEspera = new JLabel(imageIcon);
         panelEspera = new JPanel();
@@ -38,6 +39,7 @@ public class ViewEspera{
         panelEspera.add(labelMensagem, BorderLayout.EAST);
         panelEspera.setSize(200,100);
         panelEspera.setBackground(new Color(255,255,255));  
+        panelEspera.setBorder(BorderFactory.createLineBorder(Color.black));
     }
 
     public JPanel getPanelEspera() {
