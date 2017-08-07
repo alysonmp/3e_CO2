@@ -5,9 +5,13 @@
  */
 package Control.Ciclo3;
 
-import Ciclo1.Control.Interpolacao.ControlInterpolacao;
-import Ciclo1.Control.Interpolacao.ControlInterpolacaoFon;
+import Ciclo3.Control.Interpolacao.ControlInterpolacao;
+import Ciclo3.Control.Interpolacao.ControlInterpolacaoFon;
+import Ciclo3.Model.ModelCore;
+import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -28,14 +32,14 @@ public class ControlConeff {
         
         double[] X = {0, 0, 0, 21, 79, 0, 0, 0};
         
-        ControlExergia_Gases exergia = new ControlExergia_Gases(1, Te, X);
+        ControlExergia_Gases exergia = new ControlExergia_Gases(1.0, Te, X, session);
         Ee = exergia.getEin();
         He = exergia.getHin();
         Se = exergia.getSin();
         be = exergia.getBgas();
         ETe = exergia.getET();
         
-        exergia = new ControlExergia_Gases(1, Ts, X);
+        exergia = new ControlExergia_Gases(1.0, Ts, X, session);
         Es = exergia.getEin();
         Hs = exergia.getHin();
         Ss = exergia.getSin();
@@ -104,7 +108,11 @@ public class ControlConeff {
         double Accsup = (mair)/Gcsup;
         double Achsup = (m*(PM))/Ghsup; 
         
-        ControlCore core = new ControlCore(13, session);
+        Criteria cr = session.createCriteria(ModelCore.class);
+        cr.add(Restrictions.eq("cod", 13));
+        List results = cr.list();
+        ModelCore core = (ModelCore) results.get(0);
+        
         Dh1 = core.getDh();
         alp1 = core.getAlp();
         del1 = core.getDel();
@@ -116,7 +124,11 @@ public class ControlConeff {
         bet1 = core.getBet();
         por1 = core.getPor();
         
-        core = new ControlCore(13, session);
+        cr = session.createCriteria(ModelCore.class);
+        cr.add(Restrictions.eq("cod", 13));
+        results = cr.list();
+        core = (ModelCore) results.get(0);
+        
         Dh2 = core.getDh();
         alp2 = core.getAlp();
         del2 = core.getDel();

@@ -1,6 +1,6 @@
 package Control.Ciclo3;
 
-import Ciclo1.Control.Interpolacao.ControlInterpolacao;
+import Ciclo3.Control.Interpolacao.ControlInterpolacao;
 import Ciclo3.Model.ModelCore;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -204,5 +204,77 @@ public class ControlRegeff1 {
                 Gcsup=Math.pow(((DP6*(Dh2*((D6+D5)/2)))/(Lcsup*fcsup*2)),0.5);
             }
         }
+    }
+
+    public double getAT() {
+        return AT;
+    }
+
+    public void setAT(double AT) {
+        this.AT = AT;
+    }
+
+    public double getAho() {
+        return Aho;
+    }
+
+    public void setAho(double Aho) {
+        this.Aho = Aho;
+    }
+
+    public double getAco() {
+        return Aco;
+    }
+
+    public void setAco(double Aco) {
+        this.Aco = Aco;
+    }
+
+    public double getVhx() {
+        return Vhx;
+    }
+
+    public void setVhx(double Vhx) {
+        this.Vhx = Vhx;
+    }
+
+    public double getLh() {
+        return Lh;
+    }
+
+    public void setLh(double Lh) {
+        this.Lh = Lh;
+    }
+
+    public double getLc() {
+        return Lc;
+    }
+
+    public void setLc(double Lc) {
+        this.Lc = Lc;
+    }
+
+    public double getL3() {
+        return L3;
+    }
+
+    public void setL3(double L3) {
+        this.L3 = L3;
+    }
+
+    public double getDPh() {
+        return DPh;
+    }
+
+    public void setDPh(double DPh) {
+        this.DPh = DPh;
+    }
+
+    public double getDPc() {
+        return DPc;
+    }
+
+    public void setDPc(double DPc) {
+        this.DPc = DPc;
     }
 }

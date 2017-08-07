@@ -45,6 +45,7 @@ public class ViewPrincipal extends JFrame{
     private JLabel lblBeff = new JLabel("Beff: ");
     private JLabel lblTeff = new JLabel("Teff: ");
     private JLabel lblDtt = new JLabel("DTT: ");
+    private JLabel lblKm = new JLabel("Km: ");
     
     //SAIDA
     private JLabel lblWt = new JLabel("Wt: ");
@@ -68,6 +69,7 @@ public class ViewPrincipal extends JFrame{
     private JTextField txtBeff = new JTextField("0.8");
     private JTextField txtTeff = new JTextField("0.8");
     private JTextField txtDtt = new JTextField("0.8");
+    private JTextField txtKm = new JTextField("16");
     
     //SAIDA
     private JLabel txtWt = new JLabel("0");
@@ -102,7 +104,7 @@ public class ViewPrincipal extends JFrame{
     
     private JFrame frameEspera;
     
-    private int comp = 0;
+    private int comp = 0, FON;
     
     private ControlConverte controlConverte;
     
@@ -297,6 +299,18 @@ public class ViewPrincipal extends JFrame{
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtDtt,g);
         
+        g.gridx = 0;
+        g.gridy = 11;
+        g.gridwidth = 1;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(lblKm,g);
+        
+        g.gridx = 1;
+        g.gridy = 11;
+        g.gridwidth = 2;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelEntrada.add(txtKm,g);
+        
         //PAINEL SAIDA
         g.anchor = GridBagConstraints.LINE_START;
         g.gridx = 0;
@@ -395,7 +409,7 @@ public class ViewPrincipal extends JFrame{
         comboCompressor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                int FON = comboCompressor.getSelectedIndex()+1;
+                FON = comboCompressor.getSelectedIndex()+1;
                 switch(FON){
                     case 3:
                         comp = 1;
@@ -826,5 +840,21 @@ public class ViewPrincipal extends JFrame{
 
     public void setTxtTconop(JTextField txtTconop) {
         this.txtTconop = txtTconop;
+    }
+
+    public int getFON() {
+        return FON;
+    }
+
+    public void setFON(int FON) {
+        this.FON = FON;
+    }
+
+    public JTextField getTxtKm() {
+        return txtKm;
+    }
+
+    public void setTxtKm(JTextField txtKm) {
+        this.txtKm = txtKm;
     }
 }
