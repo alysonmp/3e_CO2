@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -38,6 +39,7 @@ public class ViewEspera{
         panelEspera.add(labelMensagem, BorderLayout.EAST);
         panelEspera.setSize(200,100);
         panelEspera.setBackground(new Color(255,255,255));  
+        panelEspera.setBorder(BorderFactory.createLineBorder(Color.black));
     }
 
     public JPanel getPanelEspera() {
