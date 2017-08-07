@@ -5,6 +5,7 @@
  */
 package Ciclo3.Control;
 
+import Control.Ciclo3.ControlEvpeff;
 import Control.Ciclo3.ControlBalanco;
 import Control.Ciclo3.ControlBomba;
 import Control.Ciclo3.ControlMassa;
@@ -137,7 +138,6 @@ public class Start {
         double Qreg = balanco.getQreg();
         double Qreg1 = balanco.getQreg1();
         
-        
         ctrPrincipal.getViewPrincipal().getTxtWt().setText(""+round(Wt, 3));
         ctrPrincipal.getViewPrincipal().getTxtWb().setText(""+round(Wb, 3));
         ctrPrincipal.getViewPrincipal().getTxtWn().setText(""+round(Wn, 3));
@@ -145,6 +145,13 @@ public class Start {
         ctrPrincipal.getViewPrincipal().getTxtQcon().setText(""+round(Qcon, 3));
         ctrPrincipal.getViewPrincipal().getTxtEc().setText(""+round(ec, 3)+" %");
         ctrPrincipal.getViewPrincipal().getTxtQreg().setText(""+round(Qreg, 3));
+        
+        ControlEvpeff evpeff = new ControlEvpeff(Tf, Tf2, T1, T6, P1, Pf, m, mf, Qevp, FON, Km);
+        
+        ControlRegeff1 regeff = new ControlRegeff1(T2, T3, T6, T5, P2, P5, P3, P6, m, Qreg, Km, eff);
+
+        ControlConeff coneff = new ControlConeff(T4, T3, P3, P4, m, Qcon, Km);
+
     }
     
     public double round(double value, int places) {
