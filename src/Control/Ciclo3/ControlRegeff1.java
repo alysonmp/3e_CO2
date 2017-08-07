@@ -1,5 +1,6 @@
 package Control.Ciclo3;
 
+import Ciclo1.Control.Interpolacao.ControlInterpolacao;
 import Ciclo3.Model.ModelCore;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -30,37 +31,41 @@ public class ControlRegeff1 {
             double DPf=P2*1000*4/100;
             double DP6=P5*1000*4/100;
 
-            ControlInterpolacaoGas propV = new ControlInterpolacaoGas(ii,P2,T2,session);
-            double k2 = propV.getKv_g();
-            double Cp2 = propV.getCpv_g();
-            double MU2 = propV.getMuv_g();
-            double Pr2 = propV.getPrv_g();
-            double Vc2 = propV.getVcv_g();
-            double D2 = propV.getDv_g();
+            ControlInterpolacao propV = new ControlInterpolacao(session);
+            propV.interpolacao(P2,T2);
+            double k2 = propV.getKv();
+            double Cp2 = propV.getCpv();
+            double MU2 = propV.getMuv();
+            double Pr2 = propV.getPrv();
+            double Vc2 = propV.getVcv();
+            double D2 = propV.getDf();
 
-            propV = new ControlInterpolacaoGas(ii,P3,T3,session);
-            double k3 = propV.getKv_g();
-            double Cp3 = propV.getCpv_g();
-            double MU3 = propV.getMuv_g();
-            double Pr3 = propV.getPrv_g();
-            double Vc3 = propV.getVcv_g();
-            double D3 = propV.getDv_g();
+            propV = new ControlInterpolacao(session);
+            propV.interpolacao(P3,T3);
+            double k3 = propV.getKv();
+            double Cp3 = propV.getCpv();
+            double MU3 = propV.getMuv();
+            double Pr3 = propV.getPrv();
+            double Vc3 = propV.getVcv();
+            double D3 = propV.getDf();
             
-            propV = new ControlInterpolacaoGas(ii, P5, T5, session);
-            double k5 = propV.getKv_l();
-            double Cp5 = propV.getCpv_l();
-            double MU5 = propV.getMuv_l();
-            double Pr5 = propV.getPrv_l();
-            double Vc5 = propV.getVcv_l();
-            double D5 = propV.getDv_g();
+            propV = new ControlInterpolacao(session);
+            propV.interpolacao(P5, T5);
+            double k5 = propV.getKv();
+            double Cp5 = propV.getCpv();
+            double MU5 = propV.getMuv();
+            double Pr5 = propV.getPrv();
+            double Vc5 = propV.getVcv();
+            double D5 = propV.getDf();
             
-            propV = new ControlInterpolacaoGas(ii, P6, T6, session);
-            double k6 = propV.getKv_l();
-            double Cp6 = propV.getCpv_l();
-            double MU6 = propV.getMuv_l();
-            double Pr6 = propV.getPrv_l();
-            double Vc6 = propV.getVcv_l();
-            double D6 = propV.getDv_g();
+            propV = new ControlInterpolacao(session);
+            propV.interpolacao(P6, T6);
+            double k6 = propV.getKv();
+            double Cp6 = propV.getCpv();
+            double MU6 = propV.getMuv();
+            double Pr6 = propV.getPrv();
+            double Vc6 = propV.getVcv();
+            double D6 = propV.getDf();
             
             double Tm= ((T2-T6)-(T3-T5))/(Math.log((T2-T6)/(T3-T5)));
             double UA=Qreg/(Tm);
