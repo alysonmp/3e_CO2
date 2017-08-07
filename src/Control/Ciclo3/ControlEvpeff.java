@@ -5,6 +5,8 @@
  */
 package Control.Ciclo3;
 
+import Ciclo1.Control.Interpolacao.ControlInterpolacao;
+import Ciclo1.Control.Interpolacao.ControlInterpolacaoFon;
 import Ciclo3.Model.ModelCore;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -19,7 +21,7 @@ public class ControlEvpeff {
 
     private double AT,Aho,Aco,Vhx,Lh,Lc,L3,DPh,DPc;
     
-    public ControlEvpeff(double Tf, double Tf2, double T1, double T6, double P1, double P6, double Pf, double m, double mf, double Qevp, double FON, double km, Session session) {
+    public ControlEvpeff(double Tf, double Tf2, double T1, double T6, double P1, double P6, double Pf, double m, double mf, double Qevp, int FON, double km, Session session) {
     
         double PM=44.01;
 
@@ -28,37 +30,39 @@ public class ControlEvpeff {
         double DP6=P6*1000*4/100;
         double DPf=Pf*1000*4/100;
 
-        ControlInterpolacaoGas propV = new ControlInterpolacaoGas(ii,P1,T1,session);
-        double k1 = propV.getKv_g();
-        double Cp1 = propV.getCpv_g();
-        double MU1 = propV.getMuv_g();
-        double Pr1 = propV.getPrv_g();
-        double Vc1 = propV.getVcv_g();
-        double D1 = propV.getDv_g();
+        ControlInterpolacao propV = new ControlInterpolacao(session);
+        propV.interpolacao(P1,T1);
+        double k1 = propV.getKv();
+        double Cp1 = propV.getCpv();
+        double MU1 = propV.getMuv();
+        double Pr1 = propV.getPrv();
+        double Vc1 = propV.getVcv();
+        double D1 = propV.getDf();
 
-        propV = new ControlInterpolacaoGas(ii,P6,T6,session);
-        double k6 = propV.getKv_l();
-        double Cp6 = propV.getCpv_l();
-        double MU6 = propV.getMuv_l();
-        double Pr6 = propV.getPrv_l();
-        double Vc6 = propV.getVcv_l();
-        double D6 = propV.getDv_g();
+        propV = new ControlInterpolacao(session);
+        propV.interpolacao(P6,T6);
+        double k6 = propV.getKv();
+        double Cp6 = propV.getCpv();
+        double MU6 = propV.getMuv();
+        double Pr6 = propV.getPrv();
+        double Vc6 = propV.getVcv();
+        double D6 = propV.getDf();
 
-        propV = new ControlInterpolacaoGas(FON, Pf, Tf, session);
-        double kf = propV.getKv_l();
-        double Cpf = propV.getCpv_l();
-        double MUf = propV.getMuv_l();
-        double Prf = propV.getPrv_l();
-        double Vcf = propV.getVcv_l();
-        double Df = propV.getDv_g();
+        ControlInterpolacaoFon propVf = new ControlInterpolacaoFon(FON, Pf, Tf, session);
+        double kf = propVf.getKv_g();
+        double Cpf = propVf.getCpv_g();
+        double MUf = propVf.getMuv_g();
+        double Prf = propVf.getPrv_g();
+        double Vcf = propVf.getVcv_g();
+        double Df = propVf.getDf_g();
 
-        propV = new ControlInterpolacaoGas(FON, Pf, Tf2, session);
-        double kf2 = propV.getKv_l();
-        double Cpf2 = propV.getCpv_l();
-        double MUf2 = propV.getMuv_l();
-        double Prf2 = propV.getPrv_l();
-        double Vcf2 = propV.getVcv_l();
-        double Df2 = propV.getDv_g();
+        propVf = new ControlInterpolacaoFon(FON, Pf, Tf2, session);
+        double kf2 = propVf.getKv_g();
+        double Cpf2 = propVf.getCpv_g();
+        double MUf2 = propVf.getMuv_g();
+        double Prf2 = propVf.getPrv_g();
+        double Vcf2 = propVf.getVcv_g();
+        double Df2 = propVf.getDf_g();
 
         double Tm= ((Tf-T1)-(Tf2-T6))/(Math.log((Tf-T1)/(Tf2-T6)));
         double UA=Qevp/(Tm);
@@ -145,10 +149,7 @@ public class ControlEvpeff {
 
             double e1gsup= 1-(1-e1sup)*por1;//  % Eficiência global da Superfície lado Quente
 
-
             double e2gsup= 1-(1-e2sup)*por2;//  % Eficiência global da Superfície lado Frio
-
-
 
             double iUsup=(1/(e1gsup*hhsup))+(AA/(e2gsup*hcsup));
             double Ugsup=1/iUsup;
