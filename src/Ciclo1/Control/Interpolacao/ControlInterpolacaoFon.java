@@ -14,7 +14,7 @@ import org.hibernate.Session;
 public class ControlInterpolacaoFon {
     
     Session session;
-    private double Cpv_g, Prv_g, Vcv_g, Muv_g, kv_g, Df_g;
+    private double Cpv, Prv, Vcv, Muv, kv, Df;
     private Object gas;
     
     public ControlInterpolacaoFon(int FON, double pressao, double temp, Session session){
@@ -23,12 +23,12 @@ public class ControlInterpolacaoFon {
             case 1:
                 gas = new ControlAr(session);
                 ((ControlAr)gas).interpolacao(pressao, temp);
-                Cpv_g = ((ControlAr)gas).getCpv();
-                Prv_g = ((ControlAr)gas).getPrv();
-                kv_g = ((ControlAr)gas).getKv();
-                Muv_g = ((ControlAr)gas).getMuv();
-                Vcv_g = ((ControlAr)gas).getVcv();
-                Df_g = ((ControlAr)gas).getDf();
+                Cpv = ((ControlAr)gas).getCpv();
+                Prv = ((ControlAr)gas).getPrv();
+                kv = ((ControlAr)gas).getKv();
+                Muv = ((ControlAr)gas).getMuv();
+                Vcv = ((ControlAr)gas).getVcv();
+                Df = ((ControlAr)gas).getDf();
                 break;
             
             case 3:
@@ -37,73 +37,73 @@ public class ControlInterpolacaoFon {
             case 6:
                 gas = new ControlCompressor(session);
                 ((ControlCompressor)gas).interpolacao(pressao, temp);
-                Cpv_g = ((ControlCompressor)gas).getCpv();
-                Prv_g = ((ControlCompressor)gas).getPrv();
-                kv_g = ((ControlCompressor)gas).getKv();
-                Muv_g = ((ControlCompressor)gas).getMuv();
-                Vcv_g = ((ControlCompressor)gas).getVcv();
-                Df_g = ((ControlCompressor)gas).getDf();
+                Cpv = ((ControlCompressor)gas).getCpv();
+                Prv = ((ControlCompressor)gas).getPrv();
+                kv = ((ControlCompressor)gas).getKv();
+                Muv = ((ControlCompressor)gas).getMuv();
+                Vcv = ((ControlCompressor)gas).getVcv();
+                Df = ((ControlCompressor)gas).getDf();
                 break;
                 
             case 7:
                 gas = new ControlCompressor5(session);
                 ((ControlCompressor5)gas).interpolacao(pressao, temp);
-                Cpv_g = ((ControlCompressor5)gas).getCpv();
-                Prv_g = ((ControlCompressor5)gas).getPrv();
-                kv_g = ((ControlCompressor5)gas).getKv();
-                Muv_g = ((ControlCompressor5)gas).getMuv();
-                Vcv_g = ((ControlCompressor5)gas).getVcv();
-                Df_g = ((ControlCompressor5)gas).getDf();
+                Cpv = ((ControlCompressor5)gas).getCpv();
+                Prv = ((ControlCompressor5)gas).getPrv();
+                kv = ((ControlCompressor5)gas).getKv();
+                Muv = ((ControlCompressor5)gas).getMuv();
+                Vcv = ((ControlCompressor5)gas).getVcv();
+                Df = ((ControlCompressor5)gas).getDf();
                 break;
         }
     }
 
-    public double getCpv_g() {
-        return Cpv_g;
+    public double getCpv() {
+        return Cpv;
     }
 
-    public void setCpv_g(double Cpv_g) {
-        this.Cpv_g = Cpv_g;
+    public void setCpv(double Cpv) {
+        this.Cpv = Cpv;
     }
 
-    public double getPrv_g() {
-        return Prv_g;
+    public double getPrv() {
+        return Prv;
     }
 
-    public void setPrv_g(double Prv_g) {
-        this.Prv_g = Prv_g;
+    public void setPrv(double Prv) {
+        this.Prv = Prv;
     }
 
-    public double getVcv_g() {
-        return Vcv_g;
+    public double getVcv() {
+        return Vcv;
     }
 
-    public void setVcv_g(double Vcv_g) {
-        this.Vcv_g = Vcv_g;
+    public void setVcv(double Vcv) {
+        this.Vcv = Vcv;
     }
 
-    public double getMuv_g() {
-        return Muv_g;
+    public double getMuv() {
+        return Muv;
     }
 
-    public void setMuv_g(double Muv_g) {
-        this.Muv_g = Muv_g;
+    public void setMuv(double Muv) {
+        this.Muv = Muv;
     }
 
-    public double getKv_g() {
-        return kv_g;
+    public double getKv() {
+        return kv;
     }
 
-    public void setKv_g(double kv_g) {
-        this.kv_g = kv_g;
+    public void setKv(double kv) {
+        this.kv = kv;
     }
 
-    public double getDf_g() {
-        return Df_g;
+    public double getDf() {
+        return Df;
     }
 
-    public void setDf_g(double Df_g) {
-        this.Df_g = Df_g;
+    public void setDf(double Df) {
+        this.Df = Df;
     }
     
 }
