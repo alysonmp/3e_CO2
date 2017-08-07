@@ -8,7 +8,9 @@ package Ciclo3.Control;
 import Control.Ciclo3.ControlEvpeff;
 import Control.Ciclo3.ControlBalanco;
 import Control.Ciclo3.ControlBomba;
+import Control.Ciclo3.ControlConeff;
 import Control.Ciclo3.ControlMassa;
+import Control.Ciclo3.ControlRegeff1;
 import Control.Ciclo3.ControlRegenerador;
 import Control.Ciclo3.ControlTurbina;
 import Control.Conversao.ControlConverte;
@@ -35,8 +37,8 @@ public class Start {
         double Beff=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtBeff().getText());
         double eff=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxteff().getText());
         double DTT=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtDtt().getText());
+        double Km=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtKm().getText());
 
-        
         double P1;
         if(!ctrPrincipal.getViewPrincipal().getComboP1().getSelectedItem().toString().equals("kPa")){
             P1 = converte.converte(ctrPrincipal.getViewPrincipal().getComboP1().getSelectedItem().toString(), "kPa", Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtP1().getText()));
@@ -71,6 +73,8 @@ public class Start {
         double T4=40+273.15;
         double P4=Pconop;
         double P5=P1;
+        double P3 = P2;
+        double P6 = P5;
 
         double Tf;
         if(!ctrPrincipal.getViewPrincipal().getComboTf().getSelectedItem().toString().equals("K")){
@@ -87,7 +91,8 @@ public class Start {
         }
         
         double Mf=Double.parseDouble(ctrPrincipal.getViewPrincipal().getTxtMf().getText());
-        int compressor=ctrPrincipal.getViewPrincipal().getComp();
+        int compressor = ctrPrincipal.getViewPrincipal().getComp();
+        int FON = ctrPrincipal.getViewPrincipal().getFON();
 
 
         //[H1, H2, S1, S2, T2, H2s] = turbina(Teff, P1, T1, P2, Pref, Tref);
@@ -117,6 +122,7 @@ public class Start {
             return;
         }
         
+        double T3 = regenerador.getT3();
         double H3 = regenerador.getH3();
         double H6 = regenerador.getH6();
         double S3 = regenerador.getS3();
@@ -126,6 +132,7 @@ public class Start {
         //[QTf, Tf2, m] = massa(H4, H1, H6, P1, Pref, Tref, T1, T6, SUP, Tf, compressor)
         ControlMassa massa = new ControlMassa(H4, H1, H6, P1, Pref, Tref, T1, T6, DTT, Tf, compressor, session);
         double m = massa.getM();
+        double Tf2 = massa.getTf2();
         
         //[Wt, Wb, Qevp, Qcon, ec, Qreg, Qreg1, Wn]=balanco(T1, H1, H2, H3, H4, H5, H6, S1, S2, S3, S4, S5, S6, m, Pref, Tref);
         ControlBalanco balanco = new ControlBalanco(T1, H1, H2, H3, H4, H5, H6, S1, S2, S3, S4, S5, S6, m, Pref, Tref);
@@ -146,11 +153,38 @@ public class Start {
         ctrPrincipal.getViewPrincipal().getTxtEc().setText(""+round(ec, 3)+" %");
         ctrPrincipal.getViewPrincipal().getTxtQreg().setText(""+round(Qreg, 3));
         
-        ControlEvpeff evpeff = new ControlEvpeff(Tf, Tf2, T1, T6, P1, Pf, m, mf, Qevp, FON, Km);
+        ControlEvpeff evpeff = new ControlEvpeff(Tf, Tf2, T1, T6, P1, P6, Pf, m, Mf, Qevp, FON, Km, session);
+        double ATevp = evpeff.getAT();
+        double Ahoevp = evpeff.getAho();
+        double Acoevp = evpeff.getAco();
+        double Vhxevp = evpeff.getVhx();
+        double Lhevp = evpeff.getLh();
+        double Lcevp = evpeff.getLc();
+        double L3evp = evpeff.getL3();
+        double DPhevp = evpeff.getDPh();
+        double DPcevp = evpeff.getDPc();
         
-        ControlRegeff1 regeff = new ControlRegeff1(T2, T3, T6, T5, P2, P5, P3, P6, m, Qreg, Km, eff);
-
-        ControlConeff coneff = new ControlConeff(T4, T3, P3, P4, m, Qcon, Km);
+        ControlRegeff1 regeff = new ControlRegeff1(T2, T3, T6, T5, P2, P5, P3, P6, m, Qreg, Km, eff, session);
+        double ATreg = regeff.getAT();
+        double Ahoreg = evpeff.getAho();
+        double Acoreg = evpeff.getAco();
+        double Vhxreg = evpeff.getVhx();
+        double Lhreg = evpeff.getLh();
+        double Lcreg = evpeff.getLc();
+        double L3reg = evpeff.getL3();
+        double DPhreg = evpeff.getDPh();
+        double DPcreg = evpeff.getDPc();
+        
+        ControlConeff coneff = new ControlConeff(T4, T3, P3, P4, m, Qcon, Km, session);
+        double AT = regeff.getAT();
+        double Aho = evpeff.getAho();
+        double Aco = evpeff.getAco();
+        double Vhx = evpeff.getVhx();
+        double Lh = evpeff.getLh();
+        double Lc = evpeff.getLc();
+        double L3 = evpeff.getL3();
+        double DPh = evpeff.getDPh();
+        double DPc = evpeff.getDPc();
 
     }
     

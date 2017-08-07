@@ -5,6 +5,7 @@
  */
 package Ciclo3.Model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ConsEXE_B")
-public class ModelConsEXE_B {
+public class ModelConsEXE_B implements Serializable{
 
     @Id
     @GeneratedValue

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ciclo1.Control.Interpolacao;
+package Ciclo3.Control.Interpolacao;
 
-import Model.TabelasFluidos.ModelCompressor;
+import Ciclo3.Model.ModelCompressor5;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -24,33 +24,32 @@ import org.hibernate.transform.Transformers;
  *
  * @author alysonmp
  */
-public class ControlAr {
+public class ControlCompressor5 {
     
     Session session;
-    private double Cpv, Prv, kv, Muv, Vcv, Df;
+    private double Cpv, Prv, kv, Muv, Vcv, Dfv;
     private double cpv1, cpv2, Prv1, Prv2, kv1, kv2, Muv1, Muv2, Vcv1, Vcv2, Df1, Df2;
     
-    private ModelCompressor compr1;
-    private ModelCompressor compr2;
-    private ModelCompressor compr3;
-    private ModelCompressor compr4;
+    private ModelCompressor5 compr1;
+    private ModelCompressor5 compr2;
+    private ModelCompressor5 compr3;
+    private ModelCompressor5 compr4;
     
-    public ControlAr(Session session){
+    public ControlCompressor5(Session session){
         this.session = session;
     }
     
-    public void criaTabelaAr(){
-        String csvFile = "/Csv/AIR.csv";
+    public void criaTabelaCompressor5(){
+        String csvFile = "/Csv/compre5.csv";
         InputStream is = getClass().getResourceAsStream(csvFile);
         
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ";";
-        this.session = session;
         
         try {
 
-            Criteria cr = this.session.createCriteria(ModelCompressor.class);
+            Criteria cr = this.session.createCriteria(ModelCompressor5.class);
             List results = cr.list();
             
             if(results.isEmpty()){
@@ -61,7 +60,7 @@ public class ControlAr {
                     // use comma as separator
                     String[] compr_g = line.split(cvsSplitBy);
                     
-                    session.save(new ModelCompressor(Double.parseDouble(compr_g[0]), Double.parseDouble(compr_g[1]), Double.parseDouble(compr_g[2]), Double.parseDouble(compr_g[3]), Double.parseDouble(compr_g[4]), Double.parseDouble(compr_g[5]), Double.parseDouble(compr_g[6]), Double.parseDouble(compr_g[7])));
+                    session.save(new ModelCompressor5(Double.parseDouble(compr_g[0]), Double.parseDouble(compr_g[1]), Double.parseDouble(compr_g[2]), Double.parseDouble(compr_g[3]), Double.parseDouble(compr_g[4]), Double.parseDouble(compr_g[5]), Double.parseDouble(compr_g[6]), Double.parseDouble(compr_g[7])));
                 }
             }
 
@@ -81,40 +80,39 @@ public class ControlAr {
     }
     
     public void interpolacao(double pressao, double temperatura){
-        Criteria cr = this.session.createCriteria(ModelCompressor.class);
+        Criteria cr = this.session.createCriteria(ModelCompressor5.class);
         //cr = this.session.createCriteria(ModelwaterGas.class);
-        temperatura -=1;
+        temperatura -= 1;
         do{
             temperatura += 1;
-            SQLQuery consulta = this.session.createSQLQuery("select * from AIR where pressao <= " +pressao+ "and temperatura <= " +temperatura+ "ORDER BY ID DESC FETCH FIRST 1 ROWS ONLY");
+            SQLQuery consulta = this.session.createSQLQuery("select * from compressor5 where pressao <= " +pressao+ "and temperatura <= " +temperatura+ "ORDER BY ID ASC FETCH FIRST 1 ROWS ONLY");
 
-            consulta.setResultTransformer(Transformers.aliasToBean(ModelCompressor.class));//Sem isso aqui impossível de retornar
-            List<ModelCompressor> compress = consulta.list(); 
+            consulta.setResultTransformer(Transformers.aliasToBean(ModelCompressor5.class));//Sem isso aqui impossível de retornar
+            List<ModelCompressor5> compress = consulta.list(); 
             if(!compress.isEmpty())
                 compr1 = compress.get(0);
 
-            consulta = this.session.createSQLQuery("select * from AIR where pressao <= "+pressao+" and temperatura >= "+temperatura+" ORDER BY PRESSAO DESC, TEMPERATURA ASC FETCH FIRST 1 ROWS ONLY");
+            consulta = this.session.createSQLQuery("select * from compressor5 where pressao <= "+pressao+" and temperatura >= "+temperatura+" ORDER BY PRESSAO DESC, TEMPERATURA ASC FETCH FIRST 1 ROWS ONLY");
 
-            consulta.setResultTransformer(Transformers.aliasToBean(ModelCompressor.class));//Sem isso aqui impossível de retornar
+            consulta.setResultTransformer(Transformers.aliasToBean(ModelCompressor5.class));//Sem isso aqui impossível de retornar
             compress = consulta.list(); 
             if(!compress.isEmpty())
                 compr2 = compress.get(0);
 
-            consulta = this.session.createSQLQuery("select * from compressor_1_4 where pressao >= "+pressao+" and temperatura <= "+temperatura+" ORDER BY PRESSAO ASC, TEMPERATURA DESC");
+            consulta = this.session.createSQLQuery("select * from compressor5 where pressao >= "+pressao+" and temperatura <= "+temperatura+" ORDER BY PRESSAO ASC, TEMPERATURA DESC");
 
-            consulta.setResultTransformer(Transformers.aliasToBean(ModelCompressor.class));//Sem isso aqui impossível de retornar
+            consulta.setResultTransformer(Transformers.aliasToBean(ModelCompressor5.class));//Sem isso aqui impossível de retornar
             compress = consulta.list(); 
             if(!compress.isEmpty())
                 compr3 = compress.get(0);
 
-            consulta = this.session.createSQLQuery("select * from compressor_1_4 where pressao >= " +pressao+ "and temperatura >= " +temperatura+ " FETCH FIRST 1 ROWS ONLY");
+            consulta = this.session.createSQLQuery("select * from compressor5 where pressao >= " +pressao+ "and temperatura >= " +temperatura+ " ORDER BY ID DESC FETCH FIRST 1 ROWS ONLY");
 
-            consulta.setResultTransformer(Transformers.aliasToBean(ModelCompressor.class));//Sem isso aqui impossível de retornar
+            consulta.setResultTransformer(Transformers.aliasToBean(ModelCompressor5.class));//Sem isso aqui impossível de retornar
             compress = consulta.list(); 
             if(!compress.isEmpty())
                 compr4 = compress.get(0);
 
-            
         }while(compr1 == null || compr2 == null || compr3 == null || compr4 == null);
         
         cpv1 = compr1.getCPV() + (compr2.getCPV() - compr1.getCPV()) * ((temperatura-compr1.getTEMPERATURA())/(compr2.getTEMPERATURA()-compr1.getTEMPERATURA()));
@@ -139,7 +137,13 @@ public class ControlAr {
         
         Df1 = compr1.getDFV() + (compr2.getDFV() - compr1.getDFV()) * ((temperatura-compr1.getTEMPERATURA())/(compr2.getTEMPERATURA()-compr1.getTEMPERATURA()));
         Df2 = compr3.getDFV() + (compr4.getDFV() - compr3.getDFV()) * ((temperatura-compr3.getTEMPERATURA())/(compr4.getTEMPERATURA()-compr3.getTEMPERATURA()));
-        Df = Df1 + (Df2 - Df1) * ((pressao-compr1.getPRESSAO())/(compr3.getPRESSAO()-compr1.getPRESSAO()));
+        Dfv = Df1 + (Df2 - Df1) * ((pressao-compr1.getPRESSAO())/(compr3.getPRESSAO()-compr1.getPRESSAO()));
+        
+        System.out.println("cpv = "+Cpv);
+        System.out.println("prv = "+Prv);
+        System.out.println("kv = "+kv);
+        System.out.println("muv = "+Muv);
+        System.out.println("vcv = "+Vcv);
     }
 
     public double getCpv() {
@@ -183,11 +187,11 @@ public class ControlAr {
     }
 
     public double getDf() {
-        return Df;
+        return Dfv;
     }
 
-    public void setDf(double Df) {
-        this.Df = Df;
+    public void setDf(double Dfv) {
+        this.Dfv = Dfv;
     }
 
 }

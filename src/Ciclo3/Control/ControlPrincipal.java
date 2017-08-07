@@ -5,6 +5,10 @@
  */
 package Ciclo3.Control;
 
+import Ciclo3.Control.Interpolacao.ControlAr;
+import Ciclo3.Control.Interpolacao.ControlCompressor;
+import Ciclo3.Control.Interpolacao.ControlCompressor5;
+import Ciclo3.Control.Interpolacao.ControlInterpolacao;
 import Ciclo3.Dao.ControlConexao;
 import Ciclo3.Model.ModelAir;
 import Ciclo3.Model.ModelCompressor5;
@@ -16,7 +20,7 @@ import Ciclo3.Model.ModelFluidos;
 import Ciclo3.Model.ModelQfpso;
 import Ciclo3.Util.HibernateUtil;
 import Ciclo3.View.ViewPrincipal;
-import Model.TabelasFluidos.ModelCompressor;
+import Ciclo3.Model.ModelCO2;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
@@ -184,107 +188,17 @@ public class ControlPrincipal {
         }
         tx.commit();
         
-        cr = this.session.createCriteria(ModelCompressor.class);
-        results = cr.list();
-        tx = session.beginTransaction();
+        ControlCompressor comp = new ControlCompressor(session);
+        comp.criaTabelaCompressor();
         
-        if(results.isEmpty()){
-            String csvFile = "/Csv/compre1_4.csv";
-            InputStream is = getClass().getResourceAsStream(csvFile);
-            
-            BufferedReader br = null;
-            String line = "";
-            String csvSplitBy = ";";
-            
-            try{
-                br = new BufferedReader(new InputStreamReader(is));
-                while((line = br.readLine()) != null){
-                    String[] table_c = line.split(csvSplitBy);
-                    this.session.save(new ModelCompressor(Double.parseDouble(table_c[0]),Double.parseDouble(table_c[1]),Double.parseDouble(table_c[2]),Double.parseDouble(table_c[3]),Double.parseDouble(table_c[4]),Double.parseDouble(table_c[5]),Double.parseDouble(table_c[6]),Double.parseDouble(table_c[7])));
-                }
-            }catch(FileNotFoundException e){
-                e.printStackTrace();
-            }catch(IOException e){
-                e.printStackTrace();
-            }finally {
-                if (br != null) {
-                    try {
-                        br.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-        tx.commit();
+        ControlCompressor5 comp5 = new ControlCompressor5(session);
+        comp5.criaTabelaCompressor5();
         
-        cr = this.session.createCriteria(ModelCompressor5.class);
-        results = cr.list();
-        tx = session.beginTransaction();
+        ControlAr ar = new ControlAr(session);
+        ar.criaTabelaAr();
         
-        if(results.isEmpty()){
-            String csvFile = "/Csv/compre5.csv";
-            InputStream is = getClass().getResourceAsStream(csvFile);
-            
-            BufferedReader br = null;
-            String line = "";
-            String csvSplitBy = ";";
-            
-            try{
-                br = new BufferedReader(new InputStreamReader(is));
-                while((line = br.readLine()) != null){
-                    String[] table_c = line.split(csvSplitBy);
-                    this.session.save(new ModelCompressor5(Double.parseDouble(table_c[0]),Double.parseDouble(table_c[1]),Double.parseDouble(table_c[2]),Double.parseDouble(table_c[3]),Double.parseDouble(table_c[4]),Double.parseDouble(table_c[5]),Double.parseDouble(table_c[6]),Double.parseDouble(table_c[7])));
-                }
-            }catch(FileNotFoundException e){
-                e.printStackTrace();
-            }catch(IOException e){
-                e.printStackTrace();
-            }finally {
-                if (br != null) {
-                    try {
-                        br.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-        tx.commit();
-        
-        cr = this.session.createCriteria(ModelAir.class);
-        results = cr.list();
-        tx = session.beginTransaction();
-        
-        if(results.isEmpty()){
-            String csvFile = "/Csv/compre5.csv";
-            InputStream is = getClass().getResourceAsStream(csvFile);
-            
-            BufferedReader br = null;
-            String line = "";
-            String csvSplitBy = ";";
-            
-            try{
-                br = new BufferedReader(new InputStreamReader(is));
-                while((line = br.readLine()) != null){
-                    String[] table_c = line.split(csvSplitBy);
-                    this.session.save(new ModelAir(Double.parseDouble(table_c[0]),Double.parseDouble(table_c[1]),Double.parseDouble(table_c[2]),Double.parseDouble(table_c[3]),Double.parseDouble(table_c[4]),Double.parseDouble(table_c[5]),Double.parseDouble(table_c[6]),Double.parseDouble(table_c[7])));
-                }
-            }catch(FileNotFoundException e){
-                e.printStackTrace();
-            }catch(IOException e){
-                e.printStackTrace();
-            }finally {
-                if (br != null) {
-                    try {
-                        br.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-        tx.commit();
+        ControlInterpolacao interpolacao = new ControlInterpolacao(session);
+        interpolacao.criaTabelaCO2();
         
         viewPrincipal = new ViewPrincipal(this);
         viewPrincipal.setResizable(false);

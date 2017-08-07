@@ -52,5 +52,12 @@ Contributor(s):
     <mapping class="Ciclo3.Model.ModelFluidos"/>
     <mapping class="Ciclo3.Model.ModelConstantesMat"/>
     <mapping class="Ciclo3.Model.ModelQfpso"/>
+    <mapping class="Ciclo3.Model.ModelCompressor"/>
+    <mapping class="Ciclo3.Model.ModelCompressor5"/>
+    <mapping class="Ciclo3.Model.ModelConsEXE_A"/>
+    <mapping class="Ciclo3.Model.ModelConsEXE_B"/>
+    <mapping class="Ciclo3.Model.ModelCore"/>
+    <mapping class="Ciclo3.Model.ModelAir"/>
+    <mapping class="Ciclo3.Model.ModelCO2"/>
   </session-factory>
 </hibernate-configuration>

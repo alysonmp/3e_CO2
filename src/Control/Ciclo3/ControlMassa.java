@@ -32,4 +32,12 @@ public class ControlMassa {
     public void setM(double m) {
         this.m = m;
     }
+
+    public double getTf2() {
+        return Tf2;
+    }
+
+    public void setTf2(double Tf2) {
+        this.Tf2 = Tf2;
+    }
 }

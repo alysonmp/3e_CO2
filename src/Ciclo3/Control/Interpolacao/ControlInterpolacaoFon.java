@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ciclo1.Control.Interpolacao;
+package Ciclo3.Control.Interpolacao;
 
 import org.hibernate.Session;
 

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ciclo1.Control.Interpolacao;
+package Ciclo3.Control.Interpolacao;
 
-import Model.TabelasFluidos.ModelCO2;
+import Ciclo3.Model.ModelCO2;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
