@@ -76,7 +76,7 @@ public class ControlInterpolacao {
         }
     }
     
-    public void interpolacao(double pressao, double temperatura, Session session){
+    public void interpolacao(double pressao, double temperatura){
         Criteria cr = session.createCriteria(ModelCO2.class);
         
         temperatura-=1;
