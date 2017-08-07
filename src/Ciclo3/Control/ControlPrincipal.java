@@ -7,12 +7,18 @@ package Ciclo3.Control;
 
 import Ciclo3.Dao.ControlConexao;
 import Ciclo3.Model.ModelConstantesMat;
+import Ciclo3.Model.ModelCore;
 import Ciclo3.Model.ModelFluidos;
 import Ciclo3.Model.ModelQfpso;
 import Ciclo3.Util.HibernateUtil;
 import Ciclo3.View.ViewPrincipal;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -34,7 +40,6 @@ public class ControlPrincipal {
     private ControlConexao conexao;
     
     @SuppressWarnings("empty-statement")
-    
     public ControlPrincipal(){
         conexao = new ControlConexao();
         SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -112,6 +117,40 @@ public class ControlPrincipal {
   
             tx.commit();
         }
+        
+        cr = this.session.createCriteria(ModelCore.class);
+        results = cr.list();
+        Transaction tx = session.beginTransaction();
+        
+        if(results.isEmpty()){
+            String csvFile = "/Csv/Core.csv";
+            InputStream is = getClass().getResourceAsStream(csvFile);
+            
+            BufferedReader br = null;
+            String line = "";
+            String csvSplitBy = ";";
+            
+            try{
+                br = new BufferedReader(new InputStreamReader(is));
+                while((line = br.readLine()) != null){
+                    String[] table_c = line.split(csvSplitBy);
+                    this.session.save(new ModelCore(Double.parseDouble(table_c[0]),Double.parseDouble(table_c[1]),Double.parseDouble(table_c[2]),Double.parseDouble(table_c[3]),Double.parseDouble(table_c[4]),Double.parseDouble(table_c[5]),Double.parseDouble(table_c[6]),Double.parseDouble(table_c[7]),Double.parseDouble(table_c[8]),Double.parseDouble(table_c[9])));
+                }
+            }catch(FileNotFoundException e){
+                e.printStackTrace();
+            }catch(IOException e){
+                e.printStackTrace();
+            }finally {
+                if (br != null) {
+                    try {
+                        br.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        tx.commit();
         
         viewPrincipal = new ViewPrincipal(this);
         viewPrincipal.setResizable(false);
