@@ -40,7 +40,7 @@ public class ControlCompressor5 {
     }
     
     public void criaTabelaCompressor5(){
-        String csvFile = "/Csv/compre5.csv";
+        String csvFile = "/Ciclo3/Csv/compre5.csv";
         InputStream is = getClass().getResourceAsStream(csvFile);
         
         BufferedReader br = null;
@@ -48,7 +48,6 @@ public class ControlCompressor5 {
         String cvsSplitBy = ";";
         
         try {
-
             Criteria cr = this.session.createCriteria(ModelCompressor5.class);
             List results = cr.list();
             

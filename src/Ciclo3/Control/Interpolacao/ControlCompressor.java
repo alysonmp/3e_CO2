@@ -40,7 +40,7 @@ public class ControlCompressor {
     }
     
     public void criaTabelaCompressor(){
-        String csvFile = "/Csv/compre1_4.csv";
+        String csvFile = "/Ciclo3/Csv/compre1_4.csv";
         InputStream is = getClass().getResourceAsStream(csvFile);
         
         BufferedReader br = null;

@@ -40,7 +40,7 @@ public class ControlAr {
     }
     
     public void criaTabelaAr(){
-        String csvFile = "/Csv/AIR.csv";
+        String csvFile = "/Ciclo3/Csv/AIR.csv";
         InputStream is = getClass().getResourceAsStream(csvFile);
         
         BufferedReader br = null;

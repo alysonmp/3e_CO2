@@ -154,12 +154,24 @@ public class ControlPrincipal {
            tx.commit();
         }
         
+        ControlCompressor comp = new ControlCompressor(session);
+        comp.criaTabelaCompressor();
+        
+        ControlCompressor5 comp5 = new ControlCompressor5(session);
+        comp5.criaTabelaCompressor5();
+        
+        ControlAr ar = new ControlAr(session);
+        ar.criaTabelaAr();
+        
+        ControlInterpolacao interpolacao = new ControlInterpolacao(session);
+        interpolacao.criaTabelaCO2();
+        
         cr = this.session.createCriteria(ModelCore.class);
         results = cr.list();
         Transaction tx = session.beginTransaction();
         
         if(results.isEmpty()){
-            String csvFile = "/Csv/Core.csv";
+            String csvFile = "/Ciclo3/Csv/core.csv";
             InputStream is = getClass().getResourceAsStream(csvFile);
             
             BufferedReader br = null;
@@ -187,18 +199,6 @@ public class ControlPrincipal {
             }
         }
         tx.commit();
-        
-        ControlCompressor comp = new ControlCompressor(session);
-        comp.criaTabelaCompressor();
-        
-        ControlCompressor5 comp5 = new ControlCompressor5(session);
-        comp5.criaTabelaCompressor5();
-        
-        ControlAr ar = new ControlAr(session);
-        ar.criaTabelaAr();
-        
-        ControlInterpolacao interpolacao = new ControlInterpolacao(session);
-        interpolacao.criaTabelaCO2();
         
         viewPrincipal = new ViewPrincipal(this);
         viewPrincipal.setResizable(false);

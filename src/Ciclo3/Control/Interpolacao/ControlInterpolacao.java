@@ -37,7 +37,7 @@ public class ControlInterpolacao {
     }
     
     public void criaTabelaCO2(){
-        String csvFile = "/Csv/CO2.csv";
+        String csvFile = "/Ciclo3/Csv/CO2.csv";
         InputStream is = getClass().getResourceAsStream(csvFile);
         
         BufferedReader br = null;
@@ -100,7 +100,7 @@ public class ControlInterpolacao {
             if(!CO2s.isEmpty())
                 co23 = CO2s.get(0);
 
-            consulta = session.createSQLQuery("select * from CO2 where pressao >= " +pressao+ "and temperatura >= " +temperatura+ " FETCH FIRST 1 ROWS ONLY");
+            consulta = session.createSQLQuery("select * from CO2 where pressao >= " +pressao+ " and temperatura >= " +temperatura+ " FETCH FIRST 1 ROWS ONLY");
             consulta.setResultTransformer(Transformers.aliasToBean(ModelCO2.class));
             CO2s = consulta.list();
             if(!CO2s.isEmpty())
