@@ -57,7 +57,7 @@ public class ControlConeff {
         double DP6 = Pair*1000*4/100;
         
         ControlInterpolacao interpolacao = new ControlInterpolacao(session);
-        interpolacao.interpolacao(T4, P4);
+        interpolacao.interpolacao(P4, T4);
         k4 = interpolacao.getKv();
         Cp4 = interpolacao.getCpv();
         MU4 = interpolacao.getMuv();
@@ -65,7 +65,7 @@ public class ControlConeff {
         Vc4 = interpolacao.getVcv();
         D4 = interpolacao.getDf();
         
-        interpolacao.interpolacao(T3, P3);
+        interpolacao.interpolacao(P3, T3);
         k3 = interpolacao.getKv();
         Cp3 = interpolacao.getCpv();
         MU3 = interpolacao.getMuv();
