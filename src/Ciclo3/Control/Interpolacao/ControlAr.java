@@ -100,14 +100,14 @@ public class ControlAr {
             if(!airess.isEmpty())
                 air2 = airess.get(0);
 
-            consulta = this.session.createSQLQuery("select * from airessor_1_4 where pressao >= "+pressao+" and temperatura <= "+temperatura+" ORDER BY PRESSAO ASC, TEMPERATURA DESC");
+            consulta = this.session.createSQLQuery("select * from AIR where pressao >= "+pressao+" and temperatura <= "+temperatura+" ORDER BY PRESSAO ASC, TEMPERATURA DESC");
 
             consulta.setResultTransformer(Transformers.aliasToBean(ModelAir.class));//Sem isso aqui impossível de retornar
             airess = consulta.list(); 
             if(!airess.isEmpty())
                 air3 = airess.get(0);
 
-            consulta = this.session.createSQLQuery("select * from airessor_1_4 where pressao >= " +pressao+ "and temperatura >= " +temperatura+ " FETCH FIRST 1 ROWS ONLY");
+            consulta = this.session.createSQLQuery("select * from AIR where pressao >= " +pressao+ "and temperatura >= " +temperatura+ " FETCH FIRST 1 ROWS ONLY");
 
             consulta.setResultTransformer(Transformers.aliasToBean(ModelAir.class));//Sem isso aqui impossível de retornar
             airess = consulta.list(); 

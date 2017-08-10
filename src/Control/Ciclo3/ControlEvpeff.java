@@ -5,7 +5,7 @@
  */
 package Control.Ciclo3;
 
-import Ciclo3.Control.Interpolacao.ControlInterpolacao;
+import Ciclo3.Control.Interpolacao.ControlCO2;
 import Ciclo3.Control.Interpolacao.ControlInterpolacaoFon;
 import Ciclo3.Model.ModelCore;
 import java.util.List;
@@ -30,7 +30,7 @@ public class ControlEvpeff {
         double DP6=P6*1000*4/100;
         double DPf=Pf*1000*4/100;
 
-        ControlInterpolacao propV = new ControlInterpolacao(session);
+        ControlCO2 propV = new ControlCO2(session);
         propV.interpolacao(P1,T1);
         double k1 = propV.getKv();
         double Cp1 = propV.getCpv();
@@ -39,7 +39,7 @@ public class ControlEvpeff {
         double Vc1 = propV.getVcv();
         double D1 = propV.getDf();
 
-        propV = new ControlInterpolacao(session);
+        propV = new ControlCO2(session);
         propV.interpolacao(P6,T6);
         double k6 = propV.getKv();
         double Cp6 = propV.getCpv();
@@ -100,7 +100,7 @@ public class ControlEvpeff {
         double por1 = core.getPor();
 
         cr = session.createCriteria(ModelCore.class);
-        cr.add(Restrictions.eq("cod", 9));
+        cr.add(Restrictions.eq("cod", 13));
         results = cr.list();
         core = (ModelCore) results.get(0);
 

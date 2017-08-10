@@ -48,7 +48,7 @@ public class ModelCO2 implements Serializable{
     @Column
     private double Dfv;
 
-    public ModelCO2(double pressao, double temperatura, double kv, double Cpv, double Prv, double Muv, double Vcv, double Dfv) {
+    public ModelCO2(double pressao, double temperatura, double Cpv, double Prv, double kv, double Muv, double Vcv, double Dfv) {
         this.pressao = pressao;
         this.temperatura = temperatura;
         this.kv = kv;

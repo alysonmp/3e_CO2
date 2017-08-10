@@ -94,7 +94,12 @@ public class Start {
         int compressor = ctrPrincipal.getViewPrincipal().getComp();
         int FON = ctrPrincipal.getViewPrincipal().getFON();
 
-
+        if(Tf < T1+10){
+            JOptionPane.showMessageDialog(null, "Temperatura de vaporização superior à temperatura da fonte de calor", "Error", 0);
+            return;
+        }
+        
+        
         //[H1, H2, S1, S2, T2, H2s] = turbina(Teff, P1, T1, P2, Pref, Tref);
         ControlTurbina turbina = new ControlTurbina(Teff, P1, T1, P2, Pref, Tref, session);
         if(!turbina.getMensagem().equals("")){
@@ -166,25 +171,25 @@ public class Start {
         
         ControlRegeff1 regeff = new ControlRegeff1(T2, T3, T6, T5, P2, P5, P3, P6, m, Qreg, Km, eff, session);
         double ATreg = regeff.getAT();
-        double Ahoreg = evpeff.getAho();
-        double Acoreg = evpeff.getAco();
-        double Vhxreg = evpeff.getVhx();
-        double Lhreg = evpeff.getLh();
-        double Lcreg = evpeff.getLc();
-        double L3reg = evpeff.getL3();
-        double DPhreg = evpeff.getDPh();
-        double DPcreg = evpeff.getDPc();
+        double Ahoreg = regeff.getAho();
+        double Acoreg = regeff.getAco();
+        double Vhxreg = regeff.getVhx();
+        double Lhreg = regeff.getLh();
+        double Lcreg = regeff.getLc();
+        double L3reg = regeff.getL3();
+        double DPhreg = regeff.getDPh();
+        double DPcreg = regeff.getDPc();
         
         ControlConeff coneff = new ControlConeff(T4, T3, P3, P4, m, Qcon, Km, session);
-        double AT = regeff.getAT();
-        double Aho = evpeff.getAho();
-        double Aco = evpeff.getAco();
-        double Vhx = evpeff.getVhx();
-        double Lh = evpeff.getLh();
-        double Lc = evpeff.getLc();
-        double L3 = evpeff.getL3();
-        double DPh = evpeff.getDPh();
-        double DPc = evpeff.getDPc();
+        double AT = coneff.getAT();
+        double Aho = coneff.getAho();
+        double Aco = coneff.getAco();
+        double Vhx = coneff.getVhx();
+        double Lh = coneff.getLh();
+        double Lc = coneff.getLc();
+        double L3 = coneff.getL3();
+        double DPh = coneff.getDPh();
+        double DPc = coneff.getDPc();
 
     }
     

@@ -21,7 +21,7 @@ import org.hibernate.transform.Transformers;
  *
  * @author alysonmp
  */
-public class ControlInterpolacao {
+public class ControlCO2 {
  
     private ModelCO2 co21;
     private ModelCO2 co22;
@@ -32,7 +32,7 @@ public class ControlInterpolacao {
     private double Cpv1, Cpv2, kv1, kv2, Muv1, Muv2, Prv1, Prv2, Vcv1, Vcv2, Df1, Df2;
     private Session session;
     
-    public ControlInterpolacao(Session session){
+    public ControlCO2(Session session){
         this.session = session;
     }
     
@@ -113,7 +113,7 @@ public class ControlInterpolacao {
         double t1 = ((temperatura - co21.getTEMPERATURA())/(co22.getTEMPERATURA() - co21.getTEMPERATURA()));
         double t2 = ((temperatura - co23.getTEMPERATURA())/(co24.getTEMPERATURA() - co23.getTEMPERATURA()));
 
-        Cpv2 = co21.getCPV() + (co22.getCPV() - co21.getCPV()) * t1;
+        Cpv1 = co21.getCPV() + (co22.getCPV() - co21.getCPV()) * t1;
         Cpv2 = co23.getCPV() + (co24.getCPV() - co23.getCPV()) * t2;
         Cpv = Cpv1 + (Cpv2 - Cpv1) * p;
         
@@ -133,9 +133,9 @@ public class ControlInterpolacao {
         Vcv2 = co23.getVCV() + (co24.getVCV() - co23.getVCV()) * t2;
         Vcv = Vcv1 + (Vcv2 - Vcv1) * p;
         
-        Vcv1 = co21.getDFV() + (co22.getDFV() - co21.getDFV()) * t1;
-        Vcv2 = co23.getDFV() + (co24.getDFV() - co23.getDFV()) * t2;
-        Vcv = Vcv1 + (Vcv2 - Vcv1) * p;
+        Df1 = co21.getDFV() + (co22.getDFV() - co21.getDFV()) * t1;
+        Df2 = co23.getDFV() + (co24.getDFV() - co23.getDFV()) * t2;
+        Df = Df1 + (Df2 - Df1) * p;
     }
 
     public double getCpv() {

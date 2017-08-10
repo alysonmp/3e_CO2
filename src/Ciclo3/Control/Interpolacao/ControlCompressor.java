@@ -40,7 +40,7 @@ public class ControlCompressor {
     }
     
     public void criaTabelaCompressor(){
-        String csvFile = "/Ciclo3/Csv/compre1_4.csv";
+        String csvFile = "/Ciclo3/Csv/compre_1_4.csv";
         InputStream is = getClass().getResourceAsStream(csvFile);
         
         BufferedReader br = null;
@@ -85,7 +85,7 @@ public class ControlCompressor {
         temperatura -=1;
         do{
             temperatura += 1;
-            SQLQuery consulta = this.session.createSQLQuery("select * from compressor_1_4 where pressao <= " +pressao+ "and temperatura <= " +temperatura+ "ORDER BY ID DESC FETCH FIRST 1 ROWS ONLY");
+            SQLQuery consulta = this.session.createSQLQuery("select * from compressor_1_4 where pressao <= " +pressao+ "and temperatura <= " +temperatura+ "ORDER BY ID FETCH FIRST 1 ROWS ONLY");
 
             consulta.setResultTransformer(Transformers.aliasToBean(ModelCompressor.class));//Sem isso aqui impossível de retornar
             List<ModelCompressor> compress = consulta.list(); 
@@ -106,7 +106,7 @@ public class ControlCompressor {
             if(!compress.isEmpty())
                 compr3 = compress.get(0);
 
-            consulta = this.session.createSQLQuery("select * from compressor_1_4 where pressao >= " +pressao+ "and temperatura >= " +temperatura+ " FETCH FIRST 1 ROWS ONLY");
+            consulta = this.session.createSQLQuery("select * from compressor_1_4 where pressao >= " +pressao+ "and temperatura >= " +temperatura+ " ORDER BY ID DESC FETCH FIRST 1 ROWS ONLY");
 
             consulta.setResultTransformer(Transformers.aliasToBean(ModelCompressor.class));//Sem isso aqui impossível de retornar
             compress = consulta.list(); 

@@ -300,13 +300,13 @@ public class ViewPrincipal extends JFrame{
         painelEntrada.add(txtDtt,g);
         
         g.gridx = 0;
-        g.gridy = 11;
+        g.gridy = 12;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(lblKm,g);
         
         g.gridx = 1;
-        g.gridy = 11;
+        g.gridy = 12;
         g.gridwidth = 2;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelEntrada.add(txtKm,g);

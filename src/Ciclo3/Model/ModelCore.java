@@ -76,7 +76,7 @@ public class ModelCore {
     }
 
     public double getDh() {
-        return Dh;
+        return Dh/1000;
     }
 
     public void setDh(double Dh) {

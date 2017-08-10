@@ -20,7 +20,7 @@ public class ControlInterpolacaoFon {
     public ControlInterpolacaoFon(int FON, double pressao, double temp, Session session){
         
         switch(FON){
-            case 1:
+            case 2:
                 gas = new ControlAr(session);
                 ((ControlAr)gas).interpolacao(pressao, temp);
                 Cpv = ((ControlAr)gas).getCpv();

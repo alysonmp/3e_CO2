@@ -19,7 +19,7 @@ public class ControlIsoentropiaTurbina {
     
     public ControlIsoentropiaTurbina(double Teff, double P2, double Pref, double Tref, double S1, double H1, double T1, Session session) {
     
-        double Test = T1-20;
+        double Test = T1;
         
         // [SL2, SV2] = S_sistema(Test, P2, Pref, Tref);
         ControlS_Sistema s_sistema = new ControlS_Sistema(Test, P2, Pref, Tref,session); 
@@ -29,6 +29,10 @@ public class ControlIsoentropiaTurbina {
             double DT=T1*0.1;
             while(erro >= 0.0001){
                 s_sistema = new ControlS_Sistema(Test, P2, Pref, Tref,session);
+                if(!s_sistema.getMensagem().equals("")){
+                    mensagem = s_sistema.getMensagem();
+                    return;
+                }
                 S2=s_sistema.getSV();
                 erro = Math.abs((S2-S1)/S2);
                 double Burbuja=S2-S1;

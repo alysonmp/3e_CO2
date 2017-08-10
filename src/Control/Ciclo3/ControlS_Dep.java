@@ -13,7 +13,8 @@ import org.hibernate.Session;
  */
 public class ControlS_Dep {
     
-    double Pc, Tc, Tr, Pr, F, Omegab, Omegaa, Omegac, A, B, C, N, M, Q, alfa, a, da_dT, Ps2, dif, SDL, SDV;
+    private double Pc, Tc, Tr, Pr, F, Omegab, Omegaa, Omegac, A, B, C, N, M, Q, alfa, a, da_dT, Ps2, dif, SDL, SDV;
+    private String mensagem = "";
     
     public ControlS_Dep(double T, double P,Session session){
         
@@ -41,6 +42,10 @@ public class ControlS_Dep {
         da_dT = Omegaa*(Math.pow(constantes.getR(),2)*Tc/Pc)*(-F*(Math.pow(alfa,0.5))/(Math.pow(Tr, 0.5)));
         
         ControlPdeVapor pdevapor = new ControlPdeVapor(T,session);
+        if(!pdevapor.getMensagem().equals("")){
+            mensagem = pdevapor.getMensagem();
+            return;
+        }
         Ps2 = pdevapor.getPsi();
         
         if(Ps2 <= 73.825){
@@ -81,5 +86,13 @@ public class ControlS_Dep {
 
     public void setSDV(double SDV) {
         this.SDV = SDV;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
     }
 }
