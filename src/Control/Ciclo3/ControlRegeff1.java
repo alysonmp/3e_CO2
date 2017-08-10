@@ -1,6 +1,6 @@
 package Control.Ciclo3;
 
-import Ciclo3.Control.Interpolacao.ControlInterpolacao;
+import Ciclo3.Control.Interpolacao.ControlCO2;
 import Ciclo3.Model.ModelCore;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -31,7 +31,7 @@ public class ControlRegeff1 {
             double DPf=P2*1000*4/100;
             double DP6=P5*1000*4/100;
 
-            ControlInterpolacao propV = new ControlInterpolacao(session);
+            ControlCO2 propV = new ControlCO2(session);
             propV.interpolacao(P2,T2);
             double k2 = propV.getKv();
             double Cp2 = propV.getCpv();
@@ -40,7 +40,7 @@ public class ControlRegeff1 {
             double Vc2 = propV.getVcv();
             double D2 = propV.getDf();
 
-            propV = new ControlInterpolacao(session);
+            propV = new ControlCO2(session);
             propV.interpolacao(P3,T3);
             double k3 = propV.getKv();
             double Cp3 = propV.getCpv();
@@ -49,7 +49,7 @@ public class ControlRegeff1 {
             double Vc3 = propV.getVcv();
             double D3 = propV.getDf();
             
-            propV = new ControlInterpolacao(session);
+            propV = new ControlCO2(session);
             propV.interpolacao(P5, T5);
             double k5 = propV.getKv();
             double Cp5 = propV.getCpv();
@@ -58,7 +58,7 @@ public class ControlRegeff1 {
             double Vc5 = propV.getVcv();
             double D5 = propV.getDf();
             
-            propV = new ControlInterpolacao(session);
+            propV = new ControlCO2(session);
             propV.interpolacao(P6, T6);
             double k6 = propV.getKv();
             double Cp6 = propV.getCpv();
@@ -81,8 +81,8 @@ public class ControlRegeff1 {
             double epsup= Double.min(epsilonsup1,epsilonsup2);
             double Nhsup=2*NTUsup/0.8;
             double Ncsup=2*NTUsup/0.8;
-            double Ghsup=Math.pow((((0.25)/((Math.pow(Pr2,(2/3)))*Nhsup))*(2*((D2+D3)/2)*DPf)),0.5);
-            double Gcsup=Math.pow((((0.25)/((Math.pow(Pr3,(2/3)))*Ncsup))*(2*((D5+D6)/2)*DP6)),0.5);
+            double Ghsup=Math.pow((((0.25)/((Math.pow(Pr2,(0.6666666666666)))*Nhsup))*(2*((D2+D3)/2)*DPf)),0.5);
+            double Gcsup=Math.pow((((0.25)/((Math.pow(Pr3,(0.6666666666666)))*Ncsup))*(2*((D5+D6)/2)*DP6)),0.5);
             double Accsup=(m*(PM))/Gcsup;
             double Achsup=(m*(PM))/Ghsup; 
 
@@ -103,7 +103,7 @@ public class ControlRegeff1 {
             double por1 = core.getPor();
             
             cr = session.createCriteria(ModelCore.class);
-            cr.add(Restrictions.eq("cod", 9));
+            cr.add(Restrictions.eq("cod", 13));
             results = cr.list();
             core = (ModelCore) results.get(0);
 
@@ -136,9 +136,9 @@ public class ControlRegeff1 {
                 double fcsup= (9.6243*Math.pow(Recsup,-0.7422)*Math.pow(alp2,-0.1856)*Math.pow(del2,0.3053)*Math.pow(gam2,-0.2659))*Math.pow((1+(7.669e-8*Math.pow(Recsup,4.429)*Math.pow(alp2,0.920)*Math.pow(del2,3.767)*Math.pow(gam2,0.236))),0.1);
                 double jcsup= (0.6522*Math.pow(Recsup,-0.5403)*Math.pow(alp2,-0.1541)*Math.pow(del2,0.1499)*Math.pow(gam2,-0.0678))*Math.pow((1+(5.269e-5*Math.pow(Recsup,1.340)*Math.pow(alp2,0.504)*Math.pow(del2,0.456)*Math.pow(gam2,-1.055))),0.1);
 
-                double hhsup= jhsup*Ghsup*((Cp3+Cp2)/2)/Math.pow(Pr2,(2/3)); //% Coeficiente de transferência de calor lado quente
+                double hhsup= jhsup*Ghsup*((Cp3+Cp2)/2)/Math.pow(Pr2,(0.6666666666666)); //% Coeficiente de transferência de calor lado quente
 
-                double hcsup= jcsup*Gcsup*((Cp5+Cp6)/2)/Math.pow(Pr5,(2/3)); //% Coeficiente de transferência de calor lado frio
+                double hcsup= jcsup*Gcsup*((Cp5+Cp6)/2)/Math.pow(Pr5,(0.6666666666666)); //% Coeficiente de transferência de calor lado frio
 
                 double m1sup= Math.pow((((2*hhsup)/(km*(t1)))*(1+(t1/l1))),0.5);
                 double lh=0.5*(b1-t1);

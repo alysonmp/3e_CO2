@@ -13,7 +13,8 @@ import org.hibernate.Session;
  */
 public class ControlS_Sistema {
     
-    double SDrefL, SDrefV, SDL, SDV, SL, SV, Sig;
+    private double SDrefL, SDrefV, SDL, SDV, SL, SV, Sig;
+    private String mensagem = "";
     
     public ControlS_Sistema(double T, double P, double Pref, double Tref, Session session){
         
@@ -25,6 +26,10 @@ public class ControlS_Sistema {
         Sig = ideal_gas.getSig();
         
         sdep = new ControlS_Dep(T, P,session);
+        if(!sdep.getMensagem().equals("")){
+            mensagem = sdep.getMensagem();
+            return;
+        }
         
         SDL = sdep.getSDL();
         SDV = sdep.getSDV();
@@ -47,6 +52,14 @@ public class ControlS_Sistema {
 
     public void setSV(double SV) {
         this.SV = SV;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
     }
     
     

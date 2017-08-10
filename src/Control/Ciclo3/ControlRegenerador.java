@@ -5,6 +5,7 @@
  */
 package Control.Ciclo3;
 
+import javax.swing.JOptionPane;
 import org.hibernate.Session;
 
 /**
@@ -48,7 +49,7 @@ public class ControlRegenerador {
                 while(erro>0.0001){
                     it=it+1;
                     if(it > 10000){
-                        mensagem = "Erro control Regenerador";
+                        mensagem = "Com os parâmetros inseridos não é possível atingir a convergência.";
                         return;
                     }
                     h_sistema = new ControlH_Sistema(Test, P6, Pref, Tref,session);
@@ -74,10 +75,21 @@ public class ControlRegenerador {
                 S6=s_sistema.getSL();
                 IHR=eff;
             }else{ 
-                mensagem = "Não foi possível fazer regeneração";
+                mensagem = "Não foi possível fazer regeneração.";
+                return;
+            }
+            
+            double DT11=T6+5;
+            double DT12=T5+5;
+            if(T2<=DT11 && IHR>0){
+                mensagem = "Temperatura de saída do regenerador muito elevada. Diminua a efetividade do recuperador de calor.";
+                return;
+            }
+            if(IHR>0 && T3<=DT12){
+                mensagem = "Temperatura de saída do regenerador muito elevada. Diminua a efetividade do recuperador de calor.";
+                return;
             }
         }
-        
     }
 
     public double getS3() {

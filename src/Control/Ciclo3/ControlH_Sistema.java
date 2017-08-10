@@ -19,8 +19,8 @@ public class ControlH_Sistema {
     public ControlH_Sistema(double T, double P, double Pref, double Tref, Session session){
         ControlH_Dep Hdep = new ControlH_Dep(Tref, Pref,session);
         if(!Hdep.getMensagem().equals("")) {
-        		this.mensagem = Hdep.getMensagem();
-        		return;
+            this.mensagem = Hdep.getMensagem();
+            return;
         }
         
         HDrefL = Hdep.getHDL();
@@ -31,9 +31,9 @@ public class ControlH_Sistema {
 
         Hdep = new ControlH_Dep(T, P, session);
         if(!Hdep.getMensagem().equals("")) {
-	    		this.mensagem = Hdep.getMensagem();
-	    		return;
-	    }
+            this.mensagem = Hdep.getMensagem();
+            return;
+        }
         
         HDL = Hdep.getHDL();
         HDV = Hdep.getHDV();

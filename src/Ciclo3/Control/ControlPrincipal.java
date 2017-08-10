@@ -8,7 +8,7 @@ package Ciclo3.Control;
 import Ciclo3.Control.Interpolacao.ControlAr;
 import Ciclo3.Control.Interpolacao.ControlCompressor;
 import Ciclo3.Control.Interpolacao.ControlCompressor5;
-import Ciclo3.Control.Interpolacao.ControlInterpolacao;
+import Ciclo3.Control.Interpolacao.ControlCO2;
 import Ciclo3.Dao.ControlConexao;
 import Ciclo3.Model.ModelAir;
 import Ciclo3.Model.ModelCompressor5;
@@ -163,7 +163,7 @@ public class ControlPrincipal {
         ControlAr ar = new ControlAr(session);
         ar.criaTabelaAr();
         
-        ControlInterpolacao interpolacao = new ControlInterpolacao(session);
+        ControlCO2 interpolacao = new ControlCO2(session);
         interpolacao.criaTabelaCO2();
         
         cr = this.session.createCriteria(ModelCore.class);

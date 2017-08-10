@@ -5,7 +5,7 @@
  */
 package Control.Ciclo3;
 
-import Ciclo3.Control.Interpolacao.ControlInterpolacao;
+import Ciclo3.Control.Interpolacao.ControlCO2;
 import Ciclo3.Control.Interpolacao.ControlInterpolacaoFon;
 import Ciclo3.Model.ModelCore;
 import java.util.List;
@@ -56,7 +56,7 @@ public class ControlConeff {
         double DPf = P4*1000*4/100;
         double DP6 = Pair*1000*4/100;
         
-        ControlInterpolacao interpolacao = new ControlInterpolacao(session);
+        ControlCO2 interpolacao = new ControlCO2(session);
         interpolacao.interpolacao(P4, T4);
         k4 = interpolacao.getKv();
         Cp4 = interpolacao.getCpv();
@@ -73,7 +73,7 @@ public class ControlConeff {
         Vc3 = interpolacao.getVcv();
         D3 = interpolacao.getDf();
         
-        ControlInterpolacaoFon interpolacaoFon = new ControlInterpolacaoFon(2, 313.16, Pair, session);
+        ControlInterpolacaoFon interpolacaoFon = new ControlInterpolacaoFon(2, Pair, 313.16, session);
         ke = interpolacaoFon.getKv();
         Cpe = interpolacaoFon.getCpv();
         MUe = interpolacaoFon.getMuv();
@@ -81,7 +81,7 @@ public class ControlConeff {
         Vce = interpolacaoFon.getVcv();
         De = interpolacaoFon.getDf();
         
-        interpolacaoFon = new ControlInterpolacaoFon(2, Ts, Pair, session);
+        interpolacaoFon = new ControlInterpolacaoFon(2, Pair, Ts, session);
         ks = interpolacaoFon.getKv();
         Cps = interpolacaoFon.getCpv();
         MUs = interpolacaoFon.getMuv();
@@ -152,7 +152,7 @@ public class ControlConeff {
         while(erro1>0.001 || erro2>0.001){
             Rehsup = (Ghsup*Dh1)/((MU4+MU3)/2);
             fhsup = (9.6243*Math.pow(Rehsup, -0.7422)*Math.pow(alp1, -0.1856)*Math.pow(del1, 0.3053)*Math.pow(gam1, -0.2659))*(Math.pow((1+(7.669e-8*Math.pow(Rehsup, 4.429)*Math.pow(alp1, 0.920)*Math.pow(del1, 3.767)*Math.pow(gam1, 0.236))), 0.1));
-            jhsup = (0.6522*Math.pow(Rehsup, 0.5403)*Math.pow(alp1, -0.1541)*Math.pow(del1, 0.1499)*Math.pow(gam1, -0.0678))*(Math.pow((1+(5.269e-5*Math.pow(Rehsup, 1.340)*Math.pow(alp1, 0.504)*Math.pow(del1, 0.456)*Math.pow(gam1, -1.055))), 0.1));
+            jhsup = (0.6522*Math.pow(Rehsup, -0.5403)*Math.pow(alp1, -0.1541)*Math.pow(del1, 0.1499)*Math.pow(gam1, -0.0678))*(Math.pow((1+(5.269e-5*Math.pow(Rehsup, 1.340)*Math.pow(alp1, 0.504)*Math.pow(del1, 0.456)*Math.pow(gam1, -1.055))), 0.1));
 
             Recsup = (Gcsup*Dh2)/((MUe+MUs)/2);
             fcsup = (9.6243*Math.pow(Recsup, -0.7422)*Math.pow(alp2, -0.1856)*Math.pow(del2, 0.3053)*Math.pow(gam2, -0.2659))*(Math.pow((1+(7.669e-8*Math.pow(Recsup, 4.429)*Math.pow(alp2, 0.920)*Math.pow(del2, 3.767)*Math.pow(gam2, 0.236))), 0.1));
