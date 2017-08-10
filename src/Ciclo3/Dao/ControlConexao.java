@@ -11,7 +11,7 @@ import org.apache.derby.drda.NetworkServerControl;
 
 public class ControlConexao {
     
-    private String dbURL = "jdbc:derby://localhost:1527/3e;create=true;user=root;password=root";
+    private String dbURL = "jdbc:derby://localhost:1527/3e_CO2;create=true;user=root;password=root";
     private Connection conn = null;
     
     public ControlConexao() {
