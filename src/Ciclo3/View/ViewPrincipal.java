@@ -9,10 +9,12 @@ import Ciclo3.Control.ControlPrincipal;
 import Ciclo3.Control.Start;
 import Control.Conversao.ControlConverte;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -42,7 +44,7 @@ public class ViewPrincipal extends JFrame{
     
     private JTabbedPane tabbedPane = new JTabbedPane();
     
-    JPanel painelDados = new JPanel();
+    JPanel painelDados = new JPanel(new GridBagLayout());
     
     private JFrame frameEspera;
     
@@ -68,14 +70,15 @@ public class ViewPrincipal extends JFrame{
         
         //PAINEL MAIOR
         g.gridx = 0;
-        g.gridy = 0;
+        g.gridy = 1;
         g.gridwidth = 3;
+        g.insets = new Insets(0, 0, 0, 0);
         g.fill = GridBagConstraints.HORIZONTAL;
         painelDados.add(tabbedPane,g);
         
         g.gridx = 2;
-        g.gridy = 1;
-        g.gridwidth = 1;
+        g.gridy = 3;
+        g.weightx = 0.5;
         g.fill = GridBagConstraints.HORIZONTAL;
         painelDados.add(btnCalcular,g);
      
@@ -143,27 +146,27 @@ public class ViewPrincipal extends JFrame{
         this.FON = FON;
     }
 
-	public ViewFonteCalor getFonteCalor() {
-		return fonteCalor;
-	}
+    public ViewFonteCalor getFonteCalor() {
+            return fonteCalor;
+    }
 
-	public void setFonteCalor(ViewFonteCalor fonteCalor) {
-		this.fonteCalor = fonteCalor;
-	}
+    public void setFonteCalor(ViewFonteCalor fonteCalor) {
+            this.fonteCalor = fonteCalor;
+    }
 
-	public ViewDadosOperacionais getDadosOp() {
-		return dadosOp;
-	}
+    public ViewDadosOperacionais getDadosOp() {
+            return dadosOp;
+    }
 
-	public void setDadosOp(ViewDadosOperacionais dadosOp) {
-		this.dadosOp = dadosOp;
-	}
+    public void setDadosOp(ViewDadosOperacionais dadosOp) {
+            this.dadosOp = dadosOp;
+    }
 
-	public ViewTrocadores getTrocadores() {
-		return trocadores;
-	}
+    public ViewTrocadores getTrocadores() {
+            return trocadores;
+    }
 
-	public void setTrocadores(ViewTrocadores trocadores) {
-		this.trocadores = trocadores;
-	}
+    public void setTrocadores(ViewTrocadores trocadores) {
+            this.trocadores = trocadores;
+    }
 }
