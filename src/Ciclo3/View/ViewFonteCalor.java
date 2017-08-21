@@ -19,10 +19,10 @@ import Ciclo3.Control.ControlPrincipal;
 
 public class ViewFonteCalor extends JPanel{
 
-	//LABELS
-	private JLabel lblTf = new JLabel("Tf: ");
-    private JLabel lblPf = new JLabel("Pf: ");
-    private JLabel lblMf = new JLabel("Mf: ");
+    //LABELS
+    private JLabel lblTf = new JLabel("<html>T<sub>f</sub></html>");
+    private JLabel lblPf = new JLabel("<html>P<sub>f</sub></html>");
+    private JLabel lblMf = new JLabel("<html>&#7745;<sub>f</sub></html>");
     private JLabel lblcompressor = new JLabel("Compressor: ");
 	
     //FIELDS
@@ -43,14 +43,14 @@ public class ViewFonteCalor extends JPanel{
     int FON;
     int comp;
     
-	public ViewFonteCalor(ControlPrincipal ctrlPrincipal) {
-		
-		this.setLayout(new GridBagLayout());
-		this.setBorder(BorderFactory.createTitledBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.lightGray), "Entrada", 1, 2, new Font("Times New Roman", 1, 12), Color.darkGray));
-		
-		GridBagConstraints g = new GridBagConstraints();
-		
-		g.gridx = 0;
+    public ViewFonteCalor(ControlPrincipal ctrlPrincipal) {
+
+        this.setLayout(new GridBagLayout());
+        this.setBorder(BorderFactory.createTitledBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.lightGray), "Entrada", 1, 2, new Font("Times New Roman", 1, 12), Color.darkGray));
+
+        GridBagConstraints g = new GridBagConstraints();
+
+        g.gridx = 0;
         g.gridy = 0;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
@@ -148,6 +148,16 @@ public class ViewFonteCalor extends JPanel{
                     default:
                         comp = 0;
                         break;
+                }
+                
+                if(comp != 0){
+                    txtMf.setEnabled(false);
+                    txtTf.setEnabled(false);
+                    txtPf.setEnabled(false);
+                }else{
+                    txtMf.setEnabled(true);
+                    txtTf.setEnabled(true);
+                    txtPf.setEnabled(true);
                 }
                 
                 ctrlPrincipal.getViewPrincipal().setComp(comp);
