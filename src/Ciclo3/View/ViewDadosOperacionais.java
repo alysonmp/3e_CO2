@@ -18,13 +18,13 @@ import Ciclo3.Control.ControlPrincipal;
 public class ViewDadosOperacionais extends JPanel{
 
 	//LABELS
-	private JLabel lblP1 = new JLabel("P1: ");
-    private JLabel lblT1 = new JLabel("T1: ");
-    private JLabel lblBeff = new JLabel("Beff: ");
-    private JLabel lblTeff = new JLabel("Teff: ");
-    private JLabel lblPconop = new JLabel("Pconop: ");
-    private JLabel lblTconop = new JLabel("Tconop: ");
-    private JLabel lblDtt = new JLabel("DTT: ");
+    private JLabel lblP1 = new JLabel("<html>P<sub>1</sub></html>");
+    private JLabel lblT1 = new JLabel("<html>T<sub>1</sub></html>");
+    private JLabel lblTeff = new JLabel("<html>&eta;<sub>T</sub></html>");
+    private JLabel lblBeff = new JLabel("<html>&eta;<sub>B</sub></html>");
+    private JLabel lblPconop = new JLabel("<html>P<sub>conop</sub></html>");
+    private JLabel lblTconop = new JLabel("<html>T<sub>conop</sub></html>");
+    private JLabel lblDtt = new JLabel("DTT");
 	
     //FIELDS
     private JTextField txtP1 = new JTextField("150", 10);
@@ -44,14 +44,14 @@ public class ViewDadosOperacionais extends JPanel{
     private JComboBox comboP1 = new JComboBox(pressoes);
     private JComboBox comboTconop = new JComboBox(temps);
     
-	public ViewDadosOperacionais(ControlPrincipal ctrlPrincipal) {
-		
-		this.setLayout(new GridBagLayout());
-		this.setBorder(BorderFactory.createTitledBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.lightGray), "Entrada", 1, 2, new Font("Times New Roman", 1, 12), Color.darkGray));
-		
-		GridBagConstraints g = new GridBagConstraints();
-		
-		g.gridx = 0;
+    public ViewDadosOperacionais(ControlPrincipal ctrlPrincipal) {
+
+        this.setLayout(new GridBagLayout());
+        this.setBorder(BorderFactory.createTitledBorder(BorderFactory.createBevelBorder(1, Color.lightGray, Color.lightGray), "Entrada", 1, 2, new Font("Times New Roman", 1, 12), Color.darkGray));
+
+        GridBagConstraints g = new GridBagConstraints();
+
+        g.gridx = 0;
         g.gridy = 0;
         g.gridwidth = 1;
         g.fill = GridBagConstraints.HORIZONTAL;
