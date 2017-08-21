@@ -20,6 +20,7 @@ import Ciclo3.Model.ModelFluidos;
 import Ciclo3.Model.ModelQfpso;
 import Ciclo3.Util.HibernateUtil;
 import Ciclo3.View.ViewPrincipal;
+import Control.Conversao.ControlConverte;
 import Ciclo3.Model.ModelCO2;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -47,6 +48,8 @@ public class ControlPrincipal {
     private ViewPrincipal viewPrincipal;
     private Session session;
     private ControlConexao conexao;
+    
+    ControlConverte controlConverte = new ControlConverte();
     
     @SuppressWarnings("empty-statement")
     public ControlPrincipal(){
@@ -235,6 +238,14 @@ public class ControlPrincipal {
     public void setSession(Session session) {
         this.session = session;
     }
+    
+    public ControlConverte getControlConverte() {
+		return controlConverte;
+	}
+	
+	public void setControlConverte(ControlConverte controlConverte) {
+		this.controlConverte = controlConverte;
+	}
 }
 
 
