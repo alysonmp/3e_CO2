@@ -15,22 +15,30 @@ import Ciclo3.Control.ControlPrincipal;
 public class ViewSaida extends JFrame{
 
 	//LABELS
-	private JLabel lblWt = new JLabel("Wt: ");
-    private JLabel lblWn = new JLabel("Wn: ");
-    private JLabel lblWb = new JLabel("Wb: ");
-    private JLabel lblQevp = new JLabel("Qevp: ");
-    private JLabel lblQcon = new JLabel("Qcon: ");
-    private JLabel lblEc = new JLabel("Ec: ");
-    private JLabel lblQreg = new JLabel("Qreg: ");
+	JLabel lblWt = new JLabel("<html>W<sub>t</sub></html>");
+	JLabel lblWn = new JLabel("<html>W<sub>n</sub></html>");
+	JLabel lblWb = new JLabel("<html>W<sub>b</sub></html>");
+	JLabel lblQevp = new JLabel("<html>Q<sub>evp</sub></html>");
+	JLabel lblQcon = new JLabel("<html>Q<sub>con</sub></html>");
+	JLabel lblQreg = new JLabel("<html>Q<sub>reg</sub></html>");
+	JLabel lblATevp = new JLabel("<html>A<sub>evp</sub></html>");
+	JLabel lblATcon = new JLabel("<html>A<sub>con</sub></html>");
+	JLabel lblATreg = new JLabel("<html>A<sub>reg</sub></html>");
+	private JLabel lblEc = new JLabel("Ec");
+    private JLabel lblAt = new JLabel("AT");
 	
     //FIELDS
-    private JLabel txtWt = new JLabel("0");
-    private JLabel txtWn = new JLabel("0");
-    private JLabel txtWb = new JLabel("0");
-    private JLabel txtQevp = new JLabel("0");
-    private JLabel txtQcon = new JLabel("0");
-    private JLabel txtEc = new JLabel("0%");
-    private JLabel txtQreg = new JLabel("0");
+    private JLabel txtWt = new JLabel("0 Kw");
+    private JLabel txtWn = new JLabel("0 Kw");
+    private JLabel txtWb = new JLabel("0 Kw");
+    private JLabel txtQevp = new JLabel("0 kJ/s");
+    private JLabel txtQcon = new JLabel("0 kJ/s");
+    private JLabel txtEc = new JLabel("0 %");
+    private JLabel txtQreg = new JLabel("0 kJ/s");
+    private JLabel txtATevp = new JLabel("0 m²");
+    private JLabel txtATcon = new JLabel("0 m²");
+    private JLabel txtATreg = new JLabel("0 m²");
+    private JLabel txtAt = new JLabel("0 m²");
     
     JPanel painelSaida = new JPanel();
     
@@ -113,6 +121,46 @@ public class ViewSaida extends JFrame{
         g.fill = GridBagConstraints.HORIZONTAL;
         painelSaida.add(txtQreg,g);
         
+        g.gridx = 0;
+        g.gridy = 7;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelSaida.add(lblAt,g);
+        
+        g.gridx = 1;
+        g.gridy = 7;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelSaida.add(txtAt,g);
+        
+        g.gridx = 0;
+        g.gridy = 8;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelSaida.add(lblATcon,g);
+        
+        g.gridx = 1;
+        g.gridy = 8;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelSaida.add(txtATcon, g);
+        
+        g.gridx = 0;
+        g.gridy = 9;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelSaida.add(lblATreg,g);
+        
+        g.gridx = 1;
+        g.gridy = 9;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelSaida.add(txtATreg, g);
+        
+        g.gridx = 0;
+        g.gridy = 10;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelSaida.add(lblATevp,g);
+        
+        g.gridx = 1;
+        g.gridy = 10;
+        g.fill = GridBagConstraints.HORIZONTAL;
+        painelSaida.add(txtATevp, g);
+        
         this.add(painelSaida);
         this.setBounds(200, 200, 300, 250);
         this.setTitle("Dados de Saída");
@@ -176,4 +224,36 @@ public class ViewSaida extends JFrame{
     public void setTxtQreg(JLabel txtQreg) {
         this.txtQreg = txtQreg;
     }
+
+	public JLabel getTxtATevp() {
+		return txtATevp;
+	}
+
+	public void setTxtATevp(JLabel txtATevp) {
+		this.txtATevp = txtATevp;
+	}
+
+	public JLabel getTxtATcon() {
+		return txtATcon;
+	}
+
+	public void setTxtATcon(JLabel txtATcon) {
+		this.txtATcon = txtATcon;
+	}
+
+	public JLabel getTxtATreg() {
+		return txtATreg;
+	}
+
+	public void setTxtATreg(JLabel txtATreg) {
+		this.txtATreg = txtATreg;
+	}
+
+	public JLabel getTxtAt() {
+		return txtAt;
+	}
+
+	public void setTxtAt(JLabel txtAt) {
+		this.txtAt = txtAt;
+	}
 }

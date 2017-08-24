@@ -151,16 +151,6 @@ public class Start {
         double Qreg = balanco.getQreg();
         double Qreg1 = balanco.getQreg1();
         
-        ViewSaida saida = new ViewSaida(ctrPrincipal);
-        
-        saida.getTxtWt().setText(""+round(Wt, 3));
-        saida.getTxtWb().setText(""+round(Wb, 3));
-        saida.getTxtWn().setText(""+round(Wn, 3));
-        saida.getTxtQevp().setText(""+round(Qevp, 3));
-        saida.getTxtQcon().setText(""+round(Qcon, 3));
-        saida.getTxtEc().setText(""+round(ec, 3)+" %");
-        saida.getTxtQreg().setText(""+round(Qreg, 3));
-        
         double k = Double.parseDouble(ctrPrincipal.getViewPrincipal().getTrocadores().getFieldEvapK().getText());
         
         ControlEvpeff evpeff = new ControlEvpeff(Tf, Tf2, T1, T6, P1, P6, Pf, m, Mf, Qevp, FON, k, session);
@@ -190,16 +180,32 @@ public class Start {
         k = Double.parseDouble(ctrPrincipal.getViewPrincipal().getTrocadores().getFieldCondK().getText());
         
         ControlConeff coneff = new ControlConeff(T4, T3, P3, P4, m, Qcon, k, session);
-        double AT = coneff.getAT();
-        double Aho = coneff.getAho();
-        double Aco = coneff.getAco();
-        double Vhx = coneff.getVhx();
-        double Lh = coneff.getLh();
-        double Lc = coneff.getLc();
-        double L3 = coneff.getL3();
-        double DPh = coneff.getDPh();
-        double DPc = coneff.getDPc();
+        double ATcon = coneff.getAT();
+        double Ahocon = coneff.getAho();
+        double Acocon = coneff.getAco();
+        double Vhxcon = coneff.getVhx();
+        double Lhcon = coneff.getLh();
+        double Lccon = coneff.getLc();
+        double L3con = coneff.getL3();
+        double DPhcon = coneff.getDPh();
+        double DPccon = coneff.getDPc();
 
+        double AT = ATcon+ATreg+ATevp;
+        
+        ViewSaida saida = new ViewSaida(ctrPrincipal);
+        
+        saida.getTxtWt().setText(round(Wt, 3)+" kW");
+        saida.getTxtWb().setText(round(Wb, 3)+" kW");
+        saida.getTxtWn().setText(round(Wn, 3)+" kW");
+        saida.getTxtQevp().setText(round(Qevp, 3)+" kJ/s");
+        saida.getTxtQcon().setText(round(Qcon, 3)+" kJ/s");
+        saida.getTxtEc().setText(round(ec, 3)+" %");
+        saida.getTxtQreg().setText(round(Qreg, 3)+" kJ/s");
+        saida.getTxtAt().setText(round(AT, 3)+"  m²");
+        saida.getTxtATreg().setText(round(ATreg, 3)+"  m²");
+        saida.getTxtATcon().setText(round(ATcon, 3)+"  m²");
+        saida.getTxtATevp().setText(round(ATevp, 3)+"  m²");
+        
     }
     
     public double round(double value, int places) {
