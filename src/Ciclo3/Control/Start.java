@@ -69,6 +69,22 @@ public class Start {
             Tconop = Double.parseDouble(ctrPrincipal.getViewPrincipal().getDadosOp().getTxtTconop().getText());
         }
         
+        int core1 = (int)Double.parseDouble(ctrPrincipal.getViewPrincipal().getTrocadores().getFieldCondCore().getText());
+        if(core1 < 1 || core1 > 15){
+            JOptionPane.showMessageDialog(null, "Valor do core do cooler fora da faixa de valores\nEntre com valores na faixa de 0 a 15", "Error", 0);
+            return;
+        }
+        int core2 = (int)Double.parseDouble(ctrPrincipal.getViewPrincipal().getTrocadores().getFieldEvapCore().getText());
+        if(core2 < 1 || core2 > 15){
+            JOptionPane.showMessageDialog(null, "Valor do core do recuperador fora da faixa de valores\nEntre com valores na faixa de 0 a 15", "Error", 0);
+            return;
+        }
+        int core3 = (int)Double.parseDouble(ctrPrincipal.getViewPrincipal().getTrocadores().getFieldRegCore().getText());
+        if(core3 < 1 || core3 > 15){
+            JOptionPane.showMessageDialog(null, "Valor do core do regenerador fora da faixa de valores\nEntre com valores na faixa de 0 a 15", "Error", 0);
+            return;
+        }
+        
         double G=1;
         double P2=Pconop;
         double T4=40+273.15;
@@ -153,7 +169,7 @@ public class Start {
         
         double k = Double.parseDouble(ctrPrincipal.getViewPrincipal().getTrocadores().getFieldEvapK().getText());
         
-        ControlEvpeff evpeff = new ControlEvpeff(Tf, Tf2, T1, T6, P1, P6, Pf, m, Mf, Qevp, FON, k, session);
+        ControlEvpeff evpeff = new ControlEvpeff(Tf, Tf2, T1, T6, P1, P6, Pf, m, Mf, Qevp, FON, k,core2, session);
         double ATevp = evpeff.getAT();
         double Ahoevp = evpeff.getAho();
         double Acoevp = evpeff.getAco();
@@ -166,7 +182,7 @@ public class Start {
         
         k = Double.parseDouble(ctrPrincipal.getViewPrincipal().getTrocadores().getFieldRegK().getText());
         
-        ControlRegeff1 regeff = new ControlRegeff1(T2, T3, T6, T5, P2, P5, P3, P6, m, Qreg, k, eff, session);
+        ControlRegeff1 regeff = new ControlRegeff1(T2, T3, T6, T5, P2, P5, P3, P6, m, Qreg, k, eff, core3, session);
         double ATreg = regeff.getAT();
         double Ahoreg = regeff.getAho();
         double Acoreg = regeff.getAco();
@@ -179,7 +195,7 @@ public class Start {
         
         k = Double.parseDouble(ctrPrincipal.getViewPrincipal().getTrocadores().getFieldCondK().getText());
         
-        ControlConeff coneff = new ControlConeff(T4, T3, P3, P4, m, Qcon, k, session);
+        ControlConeff coneff = new ControlConeff(T4, T3, P3, P4, m, Qcon, k,core1 ,session);
         double ATcon = coneff.getAT();
         double Ahocon = coneff.getAho();
         double Acocon = coneff.getAco();
