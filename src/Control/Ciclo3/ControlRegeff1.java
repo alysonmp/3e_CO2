@@ -11,7 +11,7 @@ public class ControlRegeff1 {
 
     private double AT,Aho,Aco,Vhx,Lh,Lc,L3,DPh,DPc;
     
-    public ControlRegeff1(double T2, double T3, double T6, double T5, double P2, double P5, double P3, double P6, double m, double Qreg, double km, double eff, Session session) {     
+    public ControlRegeff1(double T2, double T3, double T6, double T5, double P2, double P5, double P3, double P6, double m, double Qreg, double km, double eff, int val_core, Session session) {     
         if(eff==0){
             AT=0;
             Aho=0;
@@ -87,7 +87,7 @@ public class ControlRegeff1 {
             double Achsup=(m*(PM))/Ghsup; 
 
             Criteria cr = session.createCriteria(ModelCore.class);
-            cr.add(Restrictions.eq("cod", 13));
+            cr.add(Restrictions.eq("cod", val_core));
             List results = cr.list();
             ModelCore core = (ModelCore) results.get(0);
             
@@ -103,7 +103,7 @@ public class ControlRegeff1 {
             double por1 = core.getPor();
             
             cr = session.createCriteria(ModelCore.class);
-            cr.add(Restrictions.eq("cod", 13));
+            cr.add(Restrictions.eq("cod", val_core));
             results = cr.list();
             core = (ModelCore) results.get(0);
 

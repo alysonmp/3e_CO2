@@ -14,30 +14,30 @@ import javax.swing.JTextField;
 public class ViewTrocadores extends JPanel{
 
 	//Recuperador Label
-	JLabel labelEvapCore = new JLabel("Core");
+	JLabel labelEvapCore = new JLabel("Core (1-15) ");
 	JLabel labelEvapK = new JLabel("K");
 	
 	//Recuperador Field
-	JTextField fieldEvapCore = new JTextField("13",15);
-	JTextField fieldEvapK = new JTextField("16",15);
+	JTextField fieldEvapCore = new JTextField("0",15);
+	JTextField fieldEvapK = new JTextField("0.0",15);
 	
 	//Cooler Label
-	JLabel labelCondCore = new JLabel("Core");
+	JLabel labelCondCore = new JLabel("Core (1-15) ");
 	JLabel labelCondK = new JLabel("K");
 	
 	//Cooler Field
-	JTextField fieldCondCore = new JTextField("13",15);
-	JTextField fieldCondK = new JTextField("16",15);
+	JTextField fieldCondCore = new JTextField("0",15);
+	JTextField fieldCondK = new JTextField("0.0",15);
 	
 	//Regenerador Label
-	JLabel labelRegCore = new JLabel("Core");
+	JLabel labelRegCore = new JLabel("Core (1-15) ");
 	JLabel labelRegK = new JLabel("K");
 	JLabel labelRegEff = new JLabel("<html>&isin;</html>");
 	
 	//Regenerador Field
-	JTextField fieldRegCore = new JTextField("13",15);
-	JTextField fieldRegK = new JTextField("16",15);
-	JTextField fieldRegEff = new JTextField("0",15);
+	JTextField fieldRegCore = new JTextField("0",15);
+	JTextField fieldRegK = new JTextField("0.0",15);
+	JTextField fieldRegEff = new JTextField("0.0",15);
 	
 	JPanel painelRecuperador;
 	JPanel painelRegenerador;
@@ -136,6 +136,8 @@ public class ViewTrocadores extends JPanel{
             g.gridy = 2;
             this.add(painelCooler, g);
 	}
+        
+        
 
 	public JTextField getFieldEvapCore() {
 		return fieldEvapCore;

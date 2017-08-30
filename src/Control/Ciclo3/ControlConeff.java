@@ -25,7 +25,7 @@ public class ControlConeff {
             e2sup, e1gsup, e2gsup, iUsup, Ugsup, Ahsup, Ahosup, Aho, AT, Acsup, Acosup, Aco, Lcsup, Lc, Lhsup, Lh, DPhsup, DPh, DPcsup, DPc, 
             Afrh, Afrc, L3, Vhx, GCsup;
             
-    public ControlConeff(double T4, double T3, double P3, double P4, double m, double Qcon, double km, Session session){
+    public ControlConeff(double T4, double T3, double P3, double P4, double m, double Qcon, double km, int val_core, Session session){
         
         Te = 273.15+30;
         Ts = T3-5;
@@ -109,7 +109,7 @@ public class ControlConeff {
         double Achsup = (m*(PM))/Ghsup; 
         
         Criteria cr = session.createCriteria(ModelCore.class);
-        cr.add(Restrictions.eq("cod", 13));
+        cr.add(Restrictions.eq("cod", val_core));
         List results = cr.list();
         ModelCore core = (ModelCore) results.get(0);
         
@@ -125,7 +125,7 @@ public class ControlConeff {
         por1 = core.getPor();
         
         cr = session.createCriteria(ModelCore.class);
-        cr.add(Restrictions.eq("cod", 13));
+        cr.add(Restrictions.eq("cod", val_core));
         results = cr.list();
         core = (ModelCore) results.get(0);
         
