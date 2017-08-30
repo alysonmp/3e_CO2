@@ -37,7 +37,7 @@ public class ViewFonteCalor extends JPanel{
     private JComboBox comboTf = new JComboBox(temps);
     private JComboBox comboPf = new JComboBox(pressoes);
     
-    private String[] fluidos = {"Água", "Ar", "Compressor 1", "Compressor 2", "Compressor 3", "Compressor 4", "Compressor 5", "Gases"};
+    private String[] fluidos = {"Compressor 1", "Compressor 2", "Compressor 3", "Compressor 4", "Compressor 5"};
     private JComboBox comboCompressor = new JComboBox(fluidos);
     
     int FON;
@@ -115,31 +115,31 @@ public class ViewFonteCalor extends JPanel{
             public void actionPerformed(ActionEvent ae) {
                 FON = comboCompressor.getSelectedIndex()+1;
                 switch(FON){
-                    case 3:
+                    case 1:
                         comp = 1;
                         txtMf.setText(55.54+"");
                         txtTf.setText(415.15+"");
                         txtPf.setText(1144.4+"");
                         break;
-                    case 4:
+                    case 2:
                         comp = 2;
                         txtMf.setText(55.54+"");
                         txtTf.setText(417.15+"");
                         txtPf.setText(3133.8+"");
                         break;
-                    case 5: 
+                    case 3: 
                         comp = 3;
                         txtMf.setText(55.54+"");
                         txtTf.setText(418.15+"");
                         txtPf.setText(8825.6+"");
                         break;
-                    case 6:
+                    case 4:
                         comp = 4;
                         txtMf.setText(55.54+"");
                         txtTf.setText(408.15+"");
                         txtPf.setText(25109+"");
                         break;
-                    case 7: 
+                    case 5: 
                         comp = 5;
                         txtMf.setText(61.78+"");
                         txtTf.setText(431.15+"");

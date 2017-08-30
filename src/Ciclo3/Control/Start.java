@@ -202,9 +202,9 @@ public class Start {
         saida.getTxtEc().setText(round(ec, 3)+" %");
         saida.getTxtQreg().setText(round(Qreg, 3)+" kJ/s");
         saida.getTxtAt().setText(round(AT, 3)+"  m²");
-        saida.getTxtATreg().setText(round(ATreg, 3)+"  m²");
-        saida.getTxtATcon().setText(round(ATcon, 3)+"  m²");
-        saida.getTxtATevp().setText(round(ATevp, 3)+"  m²");
+        saida.getTxtATreg().setText(round(ATreg, 3)+" m²");
+        saida.getTxtATcon().setText(round(ATcon, 3)+" m²");
+        saida.getTxtATevp().setText(round(ATevp, 3)+" m²");
         
     }
     

@@ -20,7 +20,7 @@ public class ControlInterpolacaoFon {
     public ControlInterpolacaoFon(int FON, double pressao, double temp, Session session){
         
         switch(FON){
-            case 2:
+            /*case 2:
                 gas = new ControlAr(session);
                 ((ControlAr)gas).interpolacao(pressao, temp);
                 Cpv = ((ControlAr)gas).getCpv();
@@ -29,12 +29,12 @@ public class ControlInterpolacaoFon {
                 Muv = ((ControlAr)gas).getMuv();
                 Vcv = ((ControlAr)gas).getVcv();
                 Df = ((ControlAr)gas).getDf();
-                break;
+                break;*/
             
+            case 1:
+            case 2:
             case 3:
             case 4:
-            case 5:
-            case 6:
                 gas = new ControlCompressor(session);
                 ((ControlCompressor)gas).interpolacao(pressao, temp);
                 Cpv = ((ControlCompressor)gas).getCpv();
@@ -45,7 +45,7 @@ public class ControlInterpolacaoFon {
                 Df = ((ControlCompressor)gas).getDf();
                 break;
                 
-            case 7:
+            case 5:
                 gas = new ControlCompressor5(session);
                 ((ControlCompressor5)gas).interpolacao(pressao, temp);
                 Cpv = ((ControlCompressor5)gas).getCpv();
