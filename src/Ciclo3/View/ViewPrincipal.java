@@ -48,7 +48,7 @@ public class ViewPrincipal extends JFrame{
     
     private JFrame frameEspera;
     
-    private int comp = 0, FON;
+    private int comp = 1, FON = 1;
     
     private ControlConverte controlConverte;
     
